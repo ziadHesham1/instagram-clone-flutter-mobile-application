@@ -38,7 +38,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
                     id: DateTime.now.toString(),
                     commentPublisherId: post.id,
                     commentPublishTime: DateTime.now(),
-                    commentContent: '${post.userName}You are so cool',
+                    commentContent: '${post.userId}You are so cool',
                   ),
                 );
               },

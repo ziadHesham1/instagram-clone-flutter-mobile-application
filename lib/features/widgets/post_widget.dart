@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/core/providers/users_provider.dart';
 import 'package:instagram_clone/core/widgets/app_widgets.dart';
 import 'package:instagram_clone/core/themes/app_styles.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +15,9 @@ class PostWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var post = Provider.of<PostsProvider>(context).findPostById(postId);
+    var user = Provider.of<UsersProvider>(context).findUserById(post.userId);
     var postPublishTime =
-        DateTime.now().difference(post.dateTime).inMinutes.toString();
+        DateTime.now().difference(post.postPublishTime).inMinutes.toString();
     return Container(
       margin: const EdgeInsets.all(5),
       // padding: const EdgeInsets.all(10),
@@ -29,9 +31,12 @@ class PostWidget extends StatelessWidget {
         children: [
           ListTile(
             // post publisher profile picture
-            leading: AppWidgets.testImg,
+            leading: const CircleAvatar(
+              backgroundImage: AssetImage('ziad_img.jpeg'),
+            ),
             // post publisher user name
-            title: Text(post.userName),
+            title: Text(user.name),
+
             // post date
             subtitle: Text('$postPublishTime min'),
             // follow button
@@ -39,7 +44,7 @@ class PostWidget extends StatelessWidget {
                 AppWidgets.follow_icon, 'Follow', () {}),
           ),
           //post content
-          Text(post.postContent, style: AppStyles.smaller_header),
+          Text(post.postContent,style: AppStyles.smaller_header,),
           const Spacer(),
           // like and comment buttons
           PostInteractionWidget(postId),

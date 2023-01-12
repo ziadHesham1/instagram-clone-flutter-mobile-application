@@ -13,13 +13,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => PostsProvider(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Arabian Social Media'),
-        ),
-        body: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Arabian Social Media'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           children: const [
             Status(),
             NewPost(),

@@ -1,4 +1,5 @@
-import 'package:instagram_clone/core/app_strings.dart';
+
+import 'package:flutter/cupertino.dart';
 
 class UsersModel {
   final String userId;
@@ -12,22 +13,22 @@ class UsersModel {
   });
 }
 
-class UsersProvider {
+class UsersProvider with ChangeNotifier{
   final _users = [
     UsersModel(
-      userId: 'userId1',
+      userId: 'ZiadId1',
       name: 'Ziad Hesham',
-      imgPath: ziadImgPath,
-    ),
+      imgPath: 'ziad_img.jpeg',
+    ),  
     UsersModel(
-      userId: 'userId2',
+      userId: 'MostafaId2',
       name: 'Mostafa Ramadan',
       imgPath: 'ziad_img.jpeg',
     ),
     UsersModel(
-      userId: 'userId2',
+      userId: 'TarekId2',
       name: 'Mohamed Tarek',
-      imgPath: 'ziad_img.jpeg',
+      imgPath: 'tarek_img.jpeg',
     ),
   ];
   get users => [..._users];

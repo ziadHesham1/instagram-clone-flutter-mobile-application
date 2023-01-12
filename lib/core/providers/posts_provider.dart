@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/providers/comment_provider.dart';
+import 'package:instagram_clone/core/providers/users_provider.dart';
+
 class PostModel {
   final String id;
-  final String userName;
-  final DateTime dateTime;
+  final String userId;
+  final DateTime postPublishTime;
   // start with text only
   final String postContent;
   final List<CommentModel> comments;
@@ -13,8 +15,8 @@ class PostModel {
 
   PostModel({
     required this.id,
-    required this.userName,
-    required this.dateTime,
+    required this.userId,
+    required this.postPublishTime,
     required this.postContent,
     required this.comments,
     required this.likesNumber,
@@ -24,33 +26,33 @@ class PostModel {
 class PostsProvider with ChangeNotifier {
   final List<PostModel> _posts = [
     PostModel(
-      id: 'id1',
-      userName: 'Ziad Hesham',
-      dateTime: DateTime.now(),
+      id: 'Postid1',
+      userId: 'ZiadId1',
+      postPublishTime: DateTime.now(),
       postContent: 'Don\'t small us',
       comments: [],
       likesNumber: 15,
     ),
     PostModel(
-      id: 'id2',
-      userName: 'Mohamed aly',
-      dateTime: DateTime.now(),
+      id: 'Postid2',
+      userId: 'TarekId2',
+      postPublishTime: DateTime.now(),
       postContent: 'postContent',
       comments: [],
       likesNumber: 15,
     ),
     PostModel(
-      id: 'id3',
-      userName: 'Mostafa Ramadan',
-      dateTime: DateTime.now(),
+      id: 'Postid3',
+      userId: 'MostafaId2',
+      postPublishTime: DateTime.now(),
       postContent: 'postContent',
       comments: [],
       likesNumber: 15,
     ),
     PostModel(
-      id: 'id5',
-      userName: 'Mohamed Tarek',
-      dateTime: DateTime.now(),
+      id: 'Postid5',
+      userId: 'ZiadId1',
+      postPublishTime: DateTime.now(),
       postContent: 'postContent',
       comments: [],
       likesNumber: 15,

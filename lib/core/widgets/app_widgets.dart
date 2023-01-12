@@ -10,8 +10,8 @@ abstract class AppWidgets {
   static Widget follow_icon = const Icon(Icons.add_box_outlined);
   static Widget like_icon = const Icon(Icons.thumb_up);
   static Widget comment_icon = const Icon(Icons.comment);
-  static ElevatedButton buildElevatedButton(icon, str, fn) {
-    return ElevatedButton.icon(
+  static Widget buildElevatedButton(icon, str, fn) {
+    return TextButton.icon(
       onPressed: fn,
       icon: icon,
       label: Text(str),
