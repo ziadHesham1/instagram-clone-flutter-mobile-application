@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/providers/posts_provider.dart';
-import 'package:provider/provider.dart';
 
 import '../widgets/new_post_widget.dart';
 import '../widgets/posts_view_widget.dart';

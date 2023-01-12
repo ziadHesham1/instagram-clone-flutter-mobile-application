@@ -18,17 +18,17 @@ class UsersProvider with ChangeNotifier{
     UsersModel(
       userId: 'ZiadId1',
       name: 'Ziad Hesham',
-      imgPath: 'ziad_img.jpeg',
+      imgPath: 'images/ziad_img.jpeg',
     ),  
-    UsersModel(
-      userId: 'MostafaId2',
-      name: 'Mostafa Ramadan',
-      imgPath: 'ziad_img.jpeg',
-    ),
     UsersModel(
       userId: 'TarekId2',
       name: 'Mohamed Tarek',
-      imgPath: 'tarek_img.jpeg',
+      imgPath: 'images/tarek_img.png',
+    ),
+    UsersModel(
+      userId: 'MostafaId2',
+      name: 'Mostafa Ramadan',
+      imgPath: 'images/tarek_img.png',
     ),
   ];
   get users => [..._users];

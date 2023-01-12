@@ -31,8 +31,10 @@ class PostWidget extends StatelessWidget {
         children: [
           ListTile(
             // post publisher profile picture
-            leading: const CircleAvatar(
-              backgroundImage: AssetImage('ziad_img.jpeg'),
+            leading:  CircleAvatar(
+              backgroundImage: AssetImage(user.imgPath),
+
+              // backgroundImage: AssetImage('images/tarek_img.png'),
             ),
             // post publisher user name
             title: Text(user.name),
@@ -44,7 +46,10 @@ class PostWidget extends StatelessWidget {
                 AppWidgets.follow_icon, 'Follow', () {}),
           ),
           //post content
-          Text(post.postContent,style: AppStyles.smaller_header,),
+          Text(
+            post.postContent,
+            style: AppStyles.smaller_header,
+          ),
           const Spacer(),
           // like and comment buttons
           PostInteractionWidget(postId),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/providers/comment_provider.dart';
-import 'package:instagram_clone/core/providers/users_provider.dart';
 
 class PostModel {
   final String id;
