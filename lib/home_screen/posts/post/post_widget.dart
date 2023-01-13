@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/providers/users_provider.dart';
-import 'package:instagram_clone/core/widgets/app_widgets.dart';
-import 'package:instagram_clone/core/themes/app_styles.dart';
+
 import 'package:provider/provider.dart';
 
-import '../../core/providers/posts_provider.dart';
-import '../../core/themes/app_colors.dart';
+import '../../../core/providers/posts_provider.dart';
+import '../../../core/providers/users_provider.dart';
+import '../../../core/themes/app_colors.dart';
+import '../../../core/themes/app_styles.dart';
+import '../../../core/widgets/app_widgets.dart';
 import 'post_interaction_widget.dart';
 
 class PostWidget extends StatelessWidget {
@@ -31,10 +32,8 @@ class PostWidget extends StatelessWidget {
         children: [
           ListTile(
             // post publisher profile picture
-            leading:  CircleAvatar(
+            leading: CircleAvatar(
               backgroundImage: AssetImage(user.imgPath),
-
-              // backgroundImage: AssetImage('images/tarek_img.png'),
             ),
             // post publisher user name
             title: Text(user.name),

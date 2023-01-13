@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/providers/comment_provider.dart';
-import '../../core/providers/posts_provider.dart';
-import '../../core/widgets/app_widgets.dart';
+import '../../../core/providers/comment_provider.dart';
+import '../../../core/providers/posts_provider.dart';
+import '../../../core/widgets/app_widgets.dart';
+import '../../post_details_screen.dart';
 
 class PostInteractionWidget extends StatefulWidget {
   final String postId;
@@ -36,11 +37,12 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
                   post.id,
                   CommentModel(
                     id: DateTime.now.toString(),
-                    commentPublisherId: post.id,
-                    commentPublishTime: DateTime.now(),
+                    userId: post.id,
+                    publishTime: DateTime.now(),
                     commentContent: '${post.userId}You are so cool',
                   ),
                 );
+                Navigator.of(context).pushNamed(PostDetailsScreen.routeName,arguments: post.comments);
               },
             );
           }),
