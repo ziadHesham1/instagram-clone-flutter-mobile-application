@@ -37,15 +37,22 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
                   post.id,
                   CommentModel(
                     id: DateTime.now.toString(),
-                    userId: post.id,
+                    userId: post.userId,
                     publishTime: DateTime.now(),
                     commentContent: '${post.userId}You are so cool',
                   ),
                 );
-                Navigator.of(context).pushNamed(PostDetailsScreen.routeName,arguments: post.comments);
               },
             );
           }),
+          TextButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.of(context).pushNamed(PostDetailsScreen.routeName,
+                      arguments: post.comments);
+                });
+              },
+              child: const Text('Show Comments'))
         ],
       ),
     );

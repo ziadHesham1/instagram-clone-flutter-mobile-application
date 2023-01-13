@@ -33,6 +33,9 @@ class UsersProvider with ChangeNotifier{
   ];
   get users => [..._users];
 
-  UsersModel findUserById(userId) =>
-      _users.firstWhere((user) => user.userId == userId);
+  UsersModel findUserById(userId) {
+    return _users.firstWhere((user) {
+      return user.userId == userId;
+    });
+  }
 }

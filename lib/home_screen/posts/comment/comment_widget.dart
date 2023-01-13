@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '../../../core/providers/users_provider.dart';
 import '../../../core/themes/app_colors.dart';
 import '../../../core/themes/app_styles.dart';
-import '../../../core/widgets/app_widgets.dart';
 
 class CommentWidget extends StatelessWidget {
   final CommentModel comment;
@@ -39,8 +38,6 @@ class CommentWidget extends StatelessWidget {
             // comment date
             subtitle: Text('$commentPublishTime min'),
             // follow button
-            trailing: AppWidgets.buildElevatedButton(
-                AppWidgets.follow_icon, 'Follow', () {}),
           ),
           //comment content
           Text(
