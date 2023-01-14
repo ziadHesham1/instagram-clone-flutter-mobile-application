@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/core/providers/users_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/providers/comment_provider.dart';
@@ -19,29 +20,38 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
   Widget build(BuildContext context) {
     var providedPosts = Provider.of<PostsProvider>(context);
     var post = providedPosts.findPostById(widget.postId);
+    var loggedInUser = Provider.of<UsersProvider>(context).loggedInUser();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           // likes buttons
-          AppWidgets.buildElevatedButton(
+          AppWidgets.buildIconTextButton(
               AppWidgets.like_icon, '${post.likesNumber}', () {}),
           const SizedBox(width: 10),
           // comments button
-          AppWidgets.buildElevatedButton(
+          AppWidgets.buildIconTextButton(
               AppWidgets.comment_icon, '${post.comments.length}', () {
             setState(
               () {
-                providedPosts.addComment(
-                  post.id,
-                  CommentModel(
-                    id: DateTime.now.toString(),
-                    userId: post.userId,
-                    publishTime: DateTime.now(),
-                    commentContent: '${post.userId}You are so cool',
-                  ),
-                );
+                if (loggedInUser != null) {
+                  var commentContent2 = '${post.userId}You are so cool';
+                  providedPosts.addComment(
+                    post.id,
+                    CommentModel(
+                      id: DateTime.now.toString(),
+                      userId: loggedInUser.id,
+                      publishTime: DateTime.now(),
+                      commentContent: commentContent2,
+                    ),
+                  );
+                  buildSnackBar(context,
+                      '${loggedInUser.name} added this comment : $commentContent2');
+                } else {
+                  buildSnackBar(
+                      context, 'You need to login to add a comment!!');
+                }
               },
             );
           }),
@@ -54,6 +64,16 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
               },
               child: const Text('Show Comments'))
         ],
+      ),
+    );
+  }
+
+  void buildSnackBar(ctx, String content) {
+    ScaffoldMessenger.of(ctx).hideCurrentSnackBar();
+    ScaffoldMessenger.of(ctx).showSnackBar(
+      SnackBar(
+        content: Text(content),
+        duration: const Duration(seconds: 2),
       ),
     );
   }

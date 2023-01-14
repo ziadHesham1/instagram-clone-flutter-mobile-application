@@ -27,7 +27,7 @@ class PostWidget extends StatelessWidget {
         border: Border.all(color: AppColors.post_border_color),
       ),
       width: double.infinity,
-      height: 200,
+      height: 170,
       child: Column(
         children: [
           ListTile(
@@ -41,7 +41,7 @@ class PostWidget extends StatelessWidget {
             // post date
             subtitle: Text('$postPublishTime min'),
             // follow button
-            trailing: AppWidgets.buildElevatedButton(
+            trailing: AppWidgets.buildIconTextButton(
                 AppWidgets.follow_icon, 'Follow', () {}),
           ),
           //post content
@@ -52,6 +52,7 @@ class PostWidget extends StatelessWidget {
           const Spacer(),
           // like and comment buttons
           PostInteractionWidget(postId),
+          
         ],
       ),
     );

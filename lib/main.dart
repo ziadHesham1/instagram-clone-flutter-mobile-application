@@ -40,6 +40,14 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         title: 'Arabian Social Media',
+        theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+            elevation: 0,
+            
+          ),
+        ),
         routes: {
           '/': (context) => const HomeScreen(),
           PostDetailsScreen.routeName: (context) => const PostDetailsScreen(),
