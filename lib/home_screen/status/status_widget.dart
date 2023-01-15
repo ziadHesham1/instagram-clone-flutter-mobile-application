@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../core/themes/app_styles.dart';
-import '../../core/widgets/titled_widget.dart';
+import '../../core/globals/global_variables.dart';
+import '../../core/globals/global_widgets/titled_widget.dart';
 
 class Status extends StatelessWidget {
   const Status({
@@ -10,6 +10,6 @@ class Status extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TitledWidget('Status Widget', AppStyles.header);
+    return const TitledWidget('Status Widget', GlobalVariables.header);
   }
 }

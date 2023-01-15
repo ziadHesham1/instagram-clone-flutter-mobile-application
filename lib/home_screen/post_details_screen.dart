@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/home_screen/posts/comment/comment_widget.dart';
+import '../../../core/providers/comment_provider.dart';
 
-import '../core/providers/comment_provider.dart';
 import 'posts/comment/comments_widget.dart';
 
 class PostDetailsScreen extends StatelessWidget {
@@ -11,6 +10,9 @@ class PostDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CommentsWidget();
+    List<CommentModel> comments =
+        ModalRoute.of(context)!.settings.arguments as List<CommentModel>;
+
+    return CommentsWidget(comments);
   }
 }

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../../core/globals/global_variables.dart';
 import '../../../core/providers/posts_provider.dart';
 import '../../../core/providers/users_provider.dart';
-import '../../../core/themes/app_colors.dart';
-import '../../../core/themes/app_styles.dart';
-import '../../../core/widgets/app_widgets.dart';
+import '../../../core/globals/global_widgets.dart';
 import 'post_interaction_widget.dart';
 
 class PostWidget extends StatelessWidget {
@@ -24,7 +23,7 @@ class PostWidget extends StatelessWidget {
       // padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: AppColors.post_border_color),
+        border: Border.all(color: GlobalVariables.post_border_color),
       ),
       width: double.infinity,
       height: 170,
@@ -41,18 +40,20 @@ class PostWidget extends StatelessWidget {
             // post date
             subtitle: Text('$postPublishTime min'),
             // follow button
-            trailing: AppWidgets.buildIconTextButton(
-                AppWidgets.follow_icon, 'Follow', () {}),
+            trailing: TextButton.icon(
+              onPressed: () {},
+              icon: GlobalWidgets.follow_icon,
+              label: const Text('Follow'),
+            ),
           ),
           //post content
           Text(
             post.postContent,
-            style: AppStyles.smaller_header,
+            style: GlobalVariables.smaller_header,
           ),
           const Spacer(),
           // like and comment buttons
           PostInteractionWidget(postId),
-          
         ],
       ),
     );

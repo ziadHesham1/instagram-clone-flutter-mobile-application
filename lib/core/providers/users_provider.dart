@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 
+import '../globals/global_variables.dart';
+
 class UsersModel {
   final String id;
   final String name;
@@ -21,23 +23,25 @@ class UsersProvider with ChangeNotifier {
     UsersModel(
       id: 'ZiadId1',
       name: 'Ziad Hesham',
-      imgPath: 'images/ziad_img.jpeg',
+      imgPath: GlobalVariables.ziadImg,
       isLoggedIn: false,
     ),
     UsersModel(
       id: 'TarekId2',
       name: 'Mohamed Tarek',
-      imgPath: 'images/tarek_img.png',
+      imgPath: GlobalVariables.tarekImg,
       isLoggedIn: false,
     ),
     UsersModel(
       id: 'MostafaId2',
       name: 'Mostafa Ramadan',
-      imgPath: 'images/mostafa_img.JPG',
+      imgPath: GlobalVariables.mostafaImg,
       isLoggedIn: false,
     ),
   ];
-  List<UsersModel> get users => [..._users];
+  List<UsersModel> get users {
+    return [..._users];
+  }
 
   UsersModel findUserById(userId) {
     return _users.firstWhere((user) {

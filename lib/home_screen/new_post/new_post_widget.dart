@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/themes/app_styles.dart';
-import 'package:instagram_clone/core/widgets/titled_widget.dart';
+import 'package:instagram_clone/core/globals/global_widgets/titled_widget.dart';
+
+import '../../core/globals/global_variables.dart';
 
 class NewPost extends StatelessWidget {
   const NewPost({
@@ -9,6 +10,6 @@ class NewPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TitledWidget('New Post Widget',AppStyles.header);
+    return const TitledWidget('New Post Widget', GlobalVariables.header);
   }
 }

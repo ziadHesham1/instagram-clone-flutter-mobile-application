@@ -3,9 +3,8 @@ import 'package:instagram_clone/core/providers/comment_provider.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../../core/globals/global_variables.dart';
 import '../../../core/providers/users_provider.dart';
-import '../../../core/themes/app_colors.dart';
-import '../../../core/themes/app_styles.dart';
 
 class CommentWidget extends StatelessWidget {
   final CommentModel comment;
@@ -21,7 +20,7 @@ class CommentWidget extends StatelessWidget {
       // padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: AppColors.post_border_color),
+        border: Border.all(color: GlobalVariables.post_border_color),
       ),
       width: double.infinity,
       height: 200,
@@ -42,7 +41,7 @@ class CommentWidget extends StatelessWidget {
           //comment content
           Text(
             comment.commentContent,
-            style: AppStyles.smaller_header,
+            style: GlobalVariables.smaller_header,
           ),
         ],
       ),

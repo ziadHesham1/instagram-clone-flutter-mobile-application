@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../themes/app_colors.dart';
+import '../global_variables.dart';
 
 class TitledWidget extends StatelessWidget {
   final String title;
@@ -18,7 +18,7 @@ class TitledWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: AppColors.post_border_color),
+        border: Border.all(color: GlobalVariables.post_border_color),
       ),
       width: double.infinity,
       height: 75,
