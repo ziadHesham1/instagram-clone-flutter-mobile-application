@@ -21,7 +21,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
   @override
   Widget build(BuildContext context) {
     var providedPosts = Provider.of<PostsProvider>(context);
-    var post = providedPosts.findPostById(widget.postId);
+    PostModel post = providedPosts.findPostById(widget.postId);
     var loggedInUser = Provider.of<UsersProvider>(context).loggedInUser();
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -45,7 +45,8 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
                 setState(
                   () {
                     if (loggedInUser != null) {
-                      var commentContent2 = '${post.userId} ${GlobalVariables.longText}';
+                      var commentContent2 =
+                          '${post.userId} ${GlobalVariables.longText}';
                       providedPosts.addComment(
                         post.id,
                         CommentModel(
@@ -75,8 +76,8 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
           TextButton(
               onPressed: () {
                 setState(() {
-                  Navigator.of(context).pushNamed(PostDetailsScreen.routeName,
-                      arguments: post.comments);
+                  Navigator.of(context)
+                      .pushNamed(PostDetailsScreen.routeName, arguments: post);
                 });
               },
               child: const Text('Show Comments'))

@@ -28,6 +28,7 @@ class CommentWidget extends StatelessWidget {
           ListTile(
             // comment publisher profile picture
             leading: CircleAvatar(
+              radius: 15,
               backgroundImage: AssetImage(user.imgPath),
             ),
             // comment publisher user name

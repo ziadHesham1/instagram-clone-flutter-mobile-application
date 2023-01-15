@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../core/providers/comment_provider.dart';
 
+import '../core/providers/posts_provider.dart';
 import 'posts/comment/comments_widget.dart';
+import 'posts/post/post_widget.dart';
 
 class PostDetailsScreen extends StatelessWidget {
   static String routeName = '/PostDetailsScreen_route';
@@ -10,9 +12,24 @@ class PostDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<CommentModel> comments =
-        ModalRoute.of(context)!.settings.arguments as List<CommentModel>;
+    PostModel post = ModalRoute.of(context)!.settings.arguments as  PostModel; 
+    List<CommentModel> comments = post.comments;
 
-    return CommentsWidget(comments);
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Post Details'),
+        ),
+        body: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+        PostWidget(post.id),
+        CommentsWidget(comments),
+      ],
+      ),
+    );
   }
 }
+ 
+

@@ -9,24 +9,22 @@ class CommentsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Post Details'),
-      ),
-      body: Column(
-        children: [
-          ...commentsList.map(
-            (CommentModel comment) => CommentWidget(comment),
-          ),
-        ],
-      ),
+    return Column(
+      // mainAxi?sAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
 
-      /* ListView.builder(
-        itemCount: commentsList.length,
-        itemBuilder: (context, index) {
-          return CommentWidget(commentsList[index]);
-        },
-      ), */
+      children: [
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            'Comments',
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800),
+          ),
+        ),
+        ...commentsList.map(
+          (CommentModel comment) => CommentWidget(comment),
+        ),
+      ],
     );
   }
 }
