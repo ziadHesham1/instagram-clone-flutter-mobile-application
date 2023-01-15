@@ -5,7 +5,7 @@ import 'comment_widget.dart';
 
 class CommentsWidget extends StatelessWidget {
   final List<CommentModel> commentsList;
-  const CommentsWidget(this.commentsList,{super.key});
+  const CommentsWidget(this.commentsList, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +13,20 @@ class CommentsWidget extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Post Details'),
       ),
-      body: ListView.builder(
+      body: Column(
+        children: [
+          ...commentsList.map(
+            (CommentModel comment) => CommentWidget(comment),
+          ),
+        ],
+      ),
+
+      /* ListView.builder(
         itemCount: commentsList.length,
         itemBuilder: (context, index) {
           return CommentWidget(commentsList[index]);
         },
-      ),
+      ), */
     );
   }
 }

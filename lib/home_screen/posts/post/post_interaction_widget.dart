@@ -45,7 +45,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
                 setState(
                   () {
                     if (loggedInUser != null) {
-                      var commentContent2 = '${post.userId}You are so cool';
+                      var commentContent2 = '${post.userId} ${GlobalVariables.longText}';
                       providedPosts.addComment(
                         post.id,
                         CommentModel(

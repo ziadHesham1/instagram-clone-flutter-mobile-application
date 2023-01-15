@@ -8,6 +8,9 @@ class GlobalVariables {
   static String ziadImg = 'images/ziad_img.jpeg';
   static String tarekImg = 'images/tarek_img.png';
   static String mostafaImg = 'images/mostafa_img.JPG';
+  //
+  static String longText =
+      'By default, ListView will automatically pad the list\'s scrollable extremities ';
 
   // Global Scaffold Key
   static GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey(); // Create a key

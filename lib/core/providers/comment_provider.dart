@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:instagram_clone/core/globals/global_variables.dart';
 
 class CommentModel {
   final String id;
@@ -15,18 +16,20 @@ class CommentModel {
 }
 
 class CommentsProvider with ChangeNotifier {
-  final List<CommentModel> _comments = [
+
+/*   final List<CommentModel> _comments = [
     CommentModel(
       id: 'Commentid1',
       userId: 'ZiadId1',
       publishTime: DateTime.now(),
-      commentContent: 'ZiadId1 comments : Don\'t small us',
+      commentContent:
+          'ZiadId1 comments :  ${GlobalVariables.longText}',
     ),
     CommentModel(
       id: 'Commentid2',
       userId: 'TarekId2',
       publishTime: DateTime.now(),
-      commentContent: 'TarekId2 commentContent',
+      commentContent: 'TarekId2 : ${GlobalVariables.longText}',
     ),
     CommentModel(
       id: 'Commentid3',
@@ -46,5 +49,4 @@ class CommentsProvider with ChangeNotifier {
 
   CommentModel findCommentById(commentPublisherId) =>
       _comments.firstWhere((comments) => comments.id == commentPublisherId);
-  
-}
+ */}

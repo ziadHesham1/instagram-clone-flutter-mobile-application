@@ -26,7 +26,8 @@ class PostWidget extends StatelessWidget {
         border: Border.all(color: GlobalVariables.post_border_color),
       ),
       width: double.infinity,
-      height: 170,
+      // height: 170,
+
       child: Column(
         children: [
           ListTile(
@@ -51,7 +52,7 @@ class PostWidget extends StatelessWidget {
             post.postContent,
             style: GlobalVariables.smaller_header,
           ),
-          const Spacer(),
+          // const Spacer(),
           // like and comment buttons
           PostInteractionWidget(postId),
         ],

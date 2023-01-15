@@ -57,7 +57,7 @@ class PostsProvider with ChangeNotifier {
       likesNumber: 15,
     ),
   ];
-  get posts => [..._posts];
+  List<PostModel> get posts => [..._posts];
 
   void addPost(PostModel newPost) {
     _posts.add(newPost);

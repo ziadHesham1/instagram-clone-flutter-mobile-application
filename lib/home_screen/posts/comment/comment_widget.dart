@@ -17,13 +17,12 @@ class CommentWidget extends StatelessWidget {
         DateTime.now().difference(comment.publishTime).inMinutes.toString();
     return Container(
       margin: const EdgeInsets.all(5),
-      // padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         border: Border.all(color: GlobalVariables.post_border_color),
       ),
       width: double.infinity,
-      height: 200,
       child: Column(
         children: [
           ListTile(
@@ -39,9 +38,12 @@ class CommentWidget extends StatelessWidget {
             // follow button
           ),
           //comment content
-          Text(
-            comment.commentContent,
-            style: GlobalVariables.smaller_header,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              comment.commentContent,
+              // style: GlobalVariables.smaller_header,
+            ),
           ),
         ],
       ),
