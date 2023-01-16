@@ -1,7 +1,7 @@
+
 import 'package:flutter/material.dart';
 
 import '../../../core/providers/comment_provider.dart';
-import 'comment_widget.dart';
 
 class CommentsWidget extends StatelessWidget {
   final List<CommentModel> commentsList;
@@ -10,9 +10,7 @@ class CommentsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxi?sAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
-
       children: [
         const Padding(
           padding: EdgeInsets.all(8.0),
@@ -21,9 +19,18 @@ class CommentsWidget extends StatelessWidget {
             style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800),
           ),
         ),
-        ...commentsList.map(
-          (CommentModel comment) => CommentWidget(comment),
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: commentsList.length,
+            itemBuilder: (context, index) {
+              return Text(commentsList[index].commentContent);
+            },
+          ),
         ),
+        /*  ...commentsList.map(
+          (CommentModel comment) => CommentWidget(comment),
+        ), */
       ],
     );
   }

@@ -9,7 +9,6 @@ import 'posts/post/posts_view_widget.dart';
 import 'status/status_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-
   const HomeScreen({
     Key? key,
   }) : super(key: key);
