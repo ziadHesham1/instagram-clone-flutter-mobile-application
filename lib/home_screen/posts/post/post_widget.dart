@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/core/globals/global_widgets/app_snackbar.dart';
 
 import 'package:provider/provider.dart';
 
@@ -17,13 +18,17 @@ class PostWidget extends StatefulWidget {
   State<PostWidget> createState() => _PostWidgetState();
 }
 
+// bool b = false;
+
 class _PostWidgetState extends State<PostWidget> {
   @override
   Widget build(BuildContext context) {
     var post = Provider.of<PostsProvider>(context).findPostById(widget.postId);
-    var user = Provider.of<UsersProvider>(context).findUserById(post.userId);
+    var userProvider = Provider.of<UsersProvider>(context);
+    var user = userProvider.findUserById(post.userId);
     var postPublishTime =
         DateTime.now().difference(post.postPublishTime).inMinutes.toString();
+
     return InkWell(
       onTap: () {
         setState(() {
@@ -32,14 +37,13 @@ class _PostWidgetState extends State<PostWidget> {
         });
       },
       child: Container(
-        margin: const EdgeInsets.all(5),
+        margin: const EdgeInsets.all(10),
         // padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(GlobalVariables.postBorderRadius),
           border: Border.all(color: GlobalVariables.post_border_color),
         ),
         width: double.infinity,
-
         child: Column(
           children: [
             ListTile(
@@ -53,23 +57,53 @@ class _PostWidgetState extends State<PostWidget> {
               // post date
               subtitle: Text('$postPublishTime min'),
               // follow button
-              trailing: TextButton.icon(
-                onPressed: () {},
-                icon: GlobalWidgets.follow_icon,
-                label: const Text('Follow'),
+              trailing: buildFollowButton(
+                userProvider,
+                post.userId,
               ),
             ),
             //post content
-            Text(
-              post.postContent,
-              style: GlobalVariables.smaller_header,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  Text(post.postContent, style: GlobalVariables.postTextStyle),
             ),
-            // const Spacer(),
             // like and comment buttons
             PostInteractionWidget(widget.postId),
           ],
         ),
       ),
+    );
+  }
+
+  bool isFollowed = false;
+  TextButton buildFollowButton(UsersProvider userProvider, postUserId) {
+    var loggedInUser = userProvider.loggedInUser();
+    // bool userIsFollowingTheOther = false;
+    if (loggedInUser != null) {
+      isFollowed = userProvider.isContaining(loggedInUser.id, postUserId);
+    }
+
+    return TextButton.icon(
+      onPressed: () {
+        setState(() {
+          if (loggedInUser != null) {
+            userProvider.follow(loggedInUser.id, postUserId);
+          } else {
+            GlobalSnackbar.showWithAction(
+              context,
+              'You need to login to Follow!!',
+              'LOGIN',
+              () {
+                GlobalVariables.homeScaffoldKey.currentState!.openDrawer();
+              },
+            );
+          }
+        });
+      },
+      icon:
+          isFollowed ? GlobalWidgets.following_icon : GlobalWidgets.follow_icon,
+      label: Text(isFollowed ? 'Following' : 'Follow'),
     );
   }
 }

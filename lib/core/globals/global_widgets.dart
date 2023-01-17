@@ -8,6 +8,7 @@ abstract class GlobalWidgets {
     'img.jpeg',
   ));
   static Widget follow_icon = const Icon(Icons.add_box_outlined);
+  static Widget following_icon = const Icon(Icons.check_box_outlined);
   static Widget like_icon = const Icon(Icons.thumb_up);
   static Widget comment_icon = const Icon(Icons.comment);
 }

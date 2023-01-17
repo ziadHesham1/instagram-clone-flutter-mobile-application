@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/globals/global_variables.dart';
+import 'package:instagram_clone/core/globals/global_widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../core/providers/users_provider.dart';
@@ -16,7 +17,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var userProvider = Provider.of<UsersProvider>(context);
     var loggedInUser = userProvider.loggedInUser();
-
     return Scaffold(
       key: GlobalVariables.homeScaffoldKey,
       appBar: AppBar(

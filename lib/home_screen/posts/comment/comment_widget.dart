@@ -19,7 +19,7 @@ class CommentWidget extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       padding: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(GlobalVariables.postBorderRadius),
         border: Border.all(color: GlobalVariables.post_border_color),
       ),
       width: double.infinity,

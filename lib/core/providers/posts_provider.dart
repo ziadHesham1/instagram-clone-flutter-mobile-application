@@ -28,7 +28,7 @@ class PostsProvider with ChangeNotifier {
       id: 'Postid1',
       userId: 'ZiadId1',
       postPublishTime: DateTime.now(),
-      postContent: 'Don\'t small us',
+      postContent: 'I found something to share with you .. please let me  know if it bad ',
       comments: [],
       likesNumber: 15,
     ),

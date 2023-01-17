@@ -9,20 +9,18 @@ class PostsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<PostModel> posts = Provider.of<PostsProvider>(context).posts;
-    return
-    /*     Column(
-      children: [
+    return Column(children: [
       ...posts.map(
         (PostModel post) => PostWidget(post.id),
       ),
-    ]);  */
-   
+    ]);
 
-        ListView.builder(
+    /*  ListView.builder(
             shrinkWrap: true,
             itemCount: posts.length,
             itemBuilder: (BuildContext context, int index) {
               return PostWidget(posts[index].id);
             });
+   */
   }
 }

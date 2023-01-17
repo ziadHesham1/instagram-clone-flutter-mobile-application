@@ -18,14 +18,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
+  /*  @override
   void initState() {
     super.initState();
     currentTheme.addListener(() {});
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
+    
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -41,11 +42,11 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         title: 'Arabian Social Media',
         theme: ThemeData(
+          primarySwatch: Colors.blueGrey,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,
             elevation: 0,
-            
           ),
         ),
         routes: {

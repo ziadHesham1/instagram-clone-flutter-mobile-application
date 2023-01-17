@@ -1,4 +1,3 @@
-import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/home_screen/posts/comment/new_comment.dart';
 import '../../../core/providers/comment_provider.dart';
@@ -28,7 +27,7 @@ class PostDetailsScreen extends StatelessWidget {
             PostWidget(post.id),
             NewComment(post),
            
-            CommentsWidget(comments),
+            CommentsWidget(comments.reversed.toList()),
 
             /*  Container(
           alignment: Alignment.bottomCenter, // align the row

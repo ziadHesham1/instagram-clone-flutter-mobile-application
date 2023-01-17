@@ -8,14 +8,21 @@ class GlobalVariables {
   static String ziadImg = 'images/ziad_img.jpeg';
   static String tarekImg = 'images/tarek_img.png';
   static String mostafaImg = 'images/mostafa_img.JPG';
+
   //
   static String longText =
       'By default, ListView will automatically pad the list\'s scrollable extremities ';
 
   // Global Scaffold Key
-  static GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey(); // Create a key
+  static GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey(); // Create a
+
+// radius
+  static const double postBorderRadius = 6;
+     static const double newCommentRadius = 15;
+
+
   // Global Colors
-  static const post_border_color = Colors.grey;
+  static const post_border_color = Colors.blueGrey;
 
   // Global Styles
   static const TextStyle header = TextStyle(
@@ -29,6 +36,10 @@ class GlobalVariables {
   static const TextStyle bigger_text = TextStyle(
     fontSize: 18,
     // fontWeight: FontWeight.w500,
+  );
+
+  static const postTextStyle = TextStyle(
+    fontSize: 18,
   );
   static const TextStyle redText = TextStyle(color: Colors.red);
 }

@@ -9,12 +9,16 @@ class UsersModel {
   final String name;
   final String imgPath;
   bool isLoggedIn;
+  List<String> followings;
+  List<String> followers;
 
   UsersModel({
     required this.id,
     required this.name,
     required this.imgPath,
     required this.isLoggedIn,
+    required this.followings,
+    required this.followers,
   });
 }
 
@@ -25,18 +29,24 @@ class UsersProvider with ChangeNotifier {
       name: 'Ziad Hesham',
       imgPath: GlobalVariables.ziadImg,
       isLoggedIn: false,
+      followings: [],
+      followers: ['TarekId2'],
     ),
     UsersModel(
       id: 'TarekId2',
       name: 'Mohamed Tarek',
       imgPath: GlobalVariables.tarekImg,
       isLoggedIn: false,
+      followings: ['ZiadId1'],
+      followers: [],
     ),
     UsersModel(
       id: 'MostafaId2',
       name: 'Mostafa Ramadan',
       imgPath: GlobalVariables.mostafaImg,
       isLoggedIn: false,
+      followings: [],
+      followers: [],
     ),
   ];
   List<UsersModel> get users {
@@ -74,5 +84,32 @@ class UsersProvider with ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  bool isContaining(firstId, secondId) {
+    var list = findUserById(firstId).followings;
+    return list.any((element) => element == secondId);
+  }
+
+  void follow(firstId, secondId) {
+    var firstFollowings = findUserById(firstId).followings;
+    var secondFollowers = findUserById(secondId).followers;
+
+    // the second id index in the first list
+    var secondIndex = isContaining(firstId, secondId);
+    // the first id index in the second list
+    var firstIndex = isContaining(secondId, firstId);
+
+    if (!secondIndex) {
+      firstFollowings.add(secondId);
+    } else {
+      firstFollowings.remove(secondId);
+    }
+
+    if (!firstIndex) {
+      secondFollowers.add(firstId);
+    } else {
+      secondFollowers.remove(firstId);
+    }
   }
 }

@@ -17,7 +17,7 @@ class TitledWidget extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(GlobalVariables.postBorderRadius),
         border: Border.all(color: GlobalVariables.post_border_color),
       ),
       width: double.infinity,

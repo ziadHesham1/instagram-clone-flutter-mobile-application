@@ -1,5 +1,6 @@
 // import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/core/globals/global_variables.dart';
 import 'package:instagram_clone/core/globals/global_widgets/app_snackbar.dart';
 import 'package:instagram_clone/core/providers/comment_provider.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,7 @@ class _NewCommentState extends State<NewComment> {
           labelText: 'add a comment',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(15),
+              Radius.circular(GlobalVariables.newCommentRadius),
             ),
           ),
         ),
@@ -45,7 +46,6 @@ class _NewCommentState extends State<NewComment> {
             ),
           );
           controller.clear();
-
         },
       ),
     );
