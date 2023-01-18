@@ -36,7 +36,6 @@ class CommentWidget extends StatelessWidget {
 
             // comment date
             subtitle: Text('$commentPublishTime min'),
-            // follow button
           ),
           //comment content
           Padding(

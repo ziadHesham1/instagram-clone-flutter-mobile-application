@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/providers/users_provider.dart';
-import 'package:instagram_clone/core/globals/global_widgets/app_snackbar.dart';
+import 'package:instagram_clone/core/globals/global_widgets/global_snackbar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/globals/global_variables.dart';
@@ -29,61 +29,65 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           // likes buttons
-
-          TextButton.icon(
-              icon: GlobalWidgets.like_icon,
-              label: Text('${post.likesNumber}'),
-              onPressed: () {}),
-
+          buildLikesButton(post),
           const SizedBox(width: 10),
           // comments button
-
-          TextButton.icon(
-              icon: GlobalWidgets.comment_icon,
-              label: Text('${post.comments.length}'),
-              onPressed: () {
-                setState(
-                  () {
-                    if (loggedInUser != null) {
-                      var commentContent2 =
-                          '${post.userId} ${GlobalVariables.longText}';
-                      providedPosts.addComment(
-                        post.id,
-                        CommentModel(
-                          id: DateTime.now.toString(),
-                          userId: loggedInUser.id,
-                          publishTime: DateTime.now(),
-                          commentContent: commentContent2,
-                        ),
-                      );
-                      GlobalSnackbar.show(context,
-                          '${loggedInUser.name} added this comment : $commentContent2');
-                    } else {
-                      GlobalSnackbar.showWithAction(
-                        context,
-                        'You need to login to add a comment!!',
-                        'LOGIN',
-                        () {
-                          GlobalVariables.homeScaffoldKey.currentState!
-                              .openDrawer();
-                        },
-                      );
-                    }
-                  },
-                );
-              }),
-
-          TextButton(
-              onPressed: () {
-                setState(() {
-                  Navigator.of(context)
-                      .pushNamed(PostDetailsScreen.routeName, arguments: post);
-                });
-              },
-              child: const Text('Show Comments'))
+          buildCommentButton(providedPosts, post, loggedInUser),
+          // show comments button
+          buildShowCommentButton(context, post)
         ],
       ),
     );
+  }
+
+  Widget buildLikesButton(PostModel post) {
+    return TextButton.icon(
+        icon: GlobalWidgets.like_icon,
+        label: Text('${post.likesNumber}'),
+        onPressed: () {});
+  }
+// replace it with the button with comment icon when new comment is ready
+  Widget buildShowCommentButton(BuildContext context, PostModel post) {
+    return TextButton(
+        onPressed: () {
+          setState(() {
+            Navigator.of(context)
+                .pushNamed(PostDetailsScreen.routeName, arguments: post);
+          });
+        },
+        child: const Text('Show Comments'));
+  }
+
+  Widget buildCommentButton(providedPosts,PostModel post, loggedInUser) {
+    return TextButton.icon(
+        icon: GlobalWidgets.comment_icon,
+        label: Text('${post.comments.length}'),
+        onPressed: () {
+          setState(
+            () {
+              if (loggedInUser != null) {
+                var commentContent2 =
+                    '${post.userId} ${GlobalVariables.longText}';
+                providedPosts.addComment(
+                  post.id,
+                  CommentModel(
+                    id: DateTime.now.toString(),
+                    userId: loggedInUser.id,
+                    publishTime: DateTime.now(),
+                    commentContent: commentContent2,
+                  ),
+                );
+                GlobalSnackbar.show(context,
+                    '${loggedInUser.name} added this comment : $commentContent2');
+              } else {
+                GlobalSnackbar.showWithLoginAction(
+                  context,
+                  'You need to login to add a comment!!',
+                );
+              }
+            },
+          );
+        });
   }
 
   void buildSnackBar(ctx, String content) {

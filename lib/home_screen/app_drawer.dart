@@ -5,10 +5,16 @@ import 'package:instagram_clone/core/globals/global_variables.dart';
 import 'package:provider/provider.dart';
 
 import '../core/providers/users_provider.dart';
+import '../profile/profile_screen.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
 
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
     var userProvider = Provider.of<UsersProvider>(context);
@@ -17,14 +23,21 @@ class AppDrawer extends StatelessWidget {
 
     return Drawer(
       child: Column(children: [
-        Container(
-          margin: const EdgeInsets.only(top: 30),
-          child: CircleAvatar(
-            radius: 50.0,
-            backgroundImage: AssetImage(
-              loggedInUser != null
-                  ? loggedInUser.imgPath
-                  : GlobalVariables.anonymousImg,
+        InkWell(
+          onTap: () => setState(
+            () {
+              Navigator.of(context).pushNamed(ProfileScreen.routeName);
+            },
+          ),
+          child: Container(
+            margin: const EdgeInsets.only(top: 30),
+            child: CircleAvatar(
+              radius: 50.0,
+              backgroundImage: AssetImage(
+                loggedInUser != null
+                    ? loggedInUser.imgPath
+                    : GlobalVariables.anonymousImg,
+              ),
             ),
           ),
         ),

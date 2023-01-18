@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/globals/global_variables.dart';
-import 'package:instagram_clone/core/globals/global_widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../core/globals/global_variables.dart';
+import '../core/globals/global_widgets/global_snackbar.dart';
 import '../core/providers/users_provider.dart';
+import '../profile/profile_screen.dart';
 import 'app_drawer.dart';
 import 'new_post/new_post_widget.dart';
 import 'posts/post/posts_view_widget.dart';
@@ -24,9 +25,18 @@ class HomeScreen extends StatelessWidget {
           'Arabian Social Media',
         ),
         actions: [
+          // appbar profile picture
           InkWell(
-            onTap: () =>
-                GlobalVariables.homeScaffoldKey.currentState!.openDrawer(),
+            onTap: () {
+              if (loggedInUser != null) {
+                Navigator.of(context).pushNamed(ProfileScreen.routeName);
+              } else {
+                GlobalSnackbar.showWithLoginAction(
+                  context,
+                  'You need to login to see your profile!!',
+                );
+              }
+            },
             child: Container(
               margin: const EdgeInsets.all(10),
               child: CircleAvatar(

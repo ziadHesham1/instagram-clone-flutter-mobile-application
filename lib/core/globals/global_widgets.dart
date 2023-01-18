@@ -3,12 +3,13 @@
 import 'package:flutter/material.dart';
 
 abstract class GlobalWidgets {
-  static Widget testImg = const CircleAvatar(
-      backgroundImage: AssetImage(
-    'img.jpeg',
-  ));
-  static Widget follow_icon = const Icon(Icons.add_box_outlined);
-  static Widget following_icon = const Icon(Icons.check_box_outlined);
+  // follow icons
+  static Widget follow_icon = const Icon(Icons.add_box);
+  static Widget following_icon = const Icon(Icons.check_box_outlined, size: 20);
+  static Widget chat_icon = const Icon(Icons.message, size: 20);
+  // const Icon(Icons.message,size: 20)
+  // like icon
   static Widget like_icon = const Icon(Icons.thumb_up);
+  // comment icon
   static Widget comment_icon = const Icon(Icons.comment);
 }

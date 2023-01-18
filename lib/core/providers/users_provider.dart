@@ -7,6 +7,7 @@ import '../globals/global_variables.dart';
 class UsersModel {
   final String id;
   final String name;
+  final String email;
   final String imgPath;
   bool isLoggedIn;
   List<String> followings;
@@ -19,35 +20,36 @@ class UsersModel {
     required this.isLoggedIn,
     required this.followings,
     required this.followers,
+    required this.email,
   });
 }
 
 class UsersProvider with ChangeNotifier {
   final List<UsersModel> _users = [
     UsersModel(
-      id: 'ZiadId1',
-      name: 'Ziad Hesham',
-      imgPath: GlobalVariables.ziadImg,
-      isLoggedIn: false,
-      followings: [],
-      followers: ['TarekId2'],
-    ),
+        id: 'ZiadId1',
+        name: 'Ziad Hesham',
+        imgPath: GlobalVariables.ziadImg,
+        isLoggedIn: false,
+        followings: [],
+        followers: ['TarekId2'],
+        email: 'Ziadhesham280@gmail.com'),
     UsersModel(
-      id: 'TarekId2',
-      name: 'Mohamed Tarek',
-      imgPath: GlobalVariables.tarekImg,
-      isLoggedIn: false,
-      followings: ['ZiadId1'],
-      followers: [],
-    ),
+        id: 'TarekId2',
+        name: 'Mohamed Tarek',
+        imgPath: GlobalVariables.tarekImg,
+        isLoggedIn: false,
+        followings: ['ZiadId1'],
+        followers: [],
+        email: 'MohamedTarek1@gmail.com'),
     UsersModel(
-      id: 'MostafaId2',
-      name: 'Mostafa Ramadan',
-      imgPath: GlobalVariables.mostafaImg,
-      isLoggedIn: false,
-      followings: [],
-      followers: [],
-    ),
+        id: 'MostafaId2',
+        name: 'Mostafa Ramadan',
+        imgPath: GlobalVariables.mostafaImg,
+        isLoggedIn: false,
+        followings: [],
+        followers: [],
+        email: 'MostafaRamadan@gmail.com'),
   ];
   List<UsersModel> get users {
     return [..._users];
@@ -60,15 +62,14 @@ class UsersProvider with ChangeNotifier {
   }
 
   UsersModel? loggedInUser() {
-    var firstWhereOrNull =
-        _users.firstWhereOrNull((user) => user.isLoggedIn == true);
-    return firstWhereOrNull;
+    var user = _users.firstWhereOrNull((user) => user.isLoggedIn == true);
+    return user;
   }
 
   void toggleLoggedInUser(userId) {
     var user = findUserById(userId);
     // user.isLoggedIn = !user.isLoggedIn;
-    var userLogged = loggedInUser();
+    var userLogged = _users.firstWhereOrNull((user) => user.isLoggedIn == true);
     // FIRST LOGIN
     if (userLogged == null && user.isLoggedIn == false) {
       user.isLoggedIn = true;
@@ -86,30 +87,32 @@ class UsersProvider with ChangeNotifier {
     notifyListeners();
   }
 
+// follow functions
   bool isContaining(firstId, secondId) {
     var list = findUserById(firstId).followings;
     return list.any((element) => element == secondId);
   }
 
   void follow(firstId, secondId) {
-    var firstFollowings = findUserById(firstId).followings;
-    var secondFollowers = findUserById(secondId).followers;
+    if (firstId != secondId) {
+      var firstFollowings = findUserById(firstId).followings;
+      var secondFollowers = findUserById(secondId).followers;
 
-    // the second id index in the first list
-    var secondIndex = isContaining(firstId, secondId);
-    // the first id index in the second list
-    var firstIndex = isContaining(secondId, firstId);
+      // the second id index in the first list
+      var secondIndex = isContaining(firstId, secondId);
+      // the first id index in the second list
+      var firstIndex = isContaining(secondId, firstId);
+      if (!secondIndex) {
+        firstFollowings.add(secondId);
+      } else {
+        firstFollowings.remove(secondId);
+      }
 
-    if (!secondIndex) {
-      firstFollowings.add(secondId);
-    } else {
-      firstFollowings.remove(secondId);
-    }
-
-    if (!firstIndex) {
-      secondFollowers.add(firstId);
-    } else {
-      secondFollowers.remove(firstId);
+      if (!firstIndex) {
+        secondFollowers.add(firstId);
+      } else {
+        secondFollowers.remove(firstId);
+      }
     }
   }
 }

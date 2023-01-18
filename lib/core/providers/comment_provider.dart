@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:instagram_clone/core/globals/global_variables.dart';
 
 class CommentModel {
   final String id;
