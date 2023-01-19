@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/globals/global_widgets.dart';
 import 'package:instagram_clone/home_screen/posts/post/follow_button_widget.dart';
+import 'package:instagram_clone/profile/follow_lists_checker.dart';
 import 'package:provider/provider.dart';
 
 import '../core/globals/global_variables.dart';
@@ -12,6 +13,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // MediaQueryData mediaQuery = MediaQuery.of(context);
+
     UsersProvider userProvider = Provider.of<UsersProvider>(context);
     var loggedInUser = userProvider.loggedInUser();
     var clickedPostUserId =
@@ -41,12 +44,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    buildUsersList('Followings', userProvider, user.followings),
-                    buildUsersList('Followers', userProvider, user.followers),
-                  ],
-                ),
+                FollowListsChecker(user,/* mediaQuery */),
               ],
             )
           : const Text(

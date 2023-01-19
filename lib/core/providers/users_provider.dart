@@ -10,8 +10,8 @@ class UsersModel {
   final String email;
   final String imgPath;
   bool isLoggedIn;
-  List<String> followings;
-  List<String> followers;
+  Set<String> followings;
+  Set<String> followers;
 
   UsersModel({
     required this.id,
@@ -31,24 +31,24 @@ class UsersProvider with ChangeNotifier {
         name: 'Ziad Hesham',
         imgPath: GlobalVariables.ziadImg,
         isLoggedIn: false,
-        followings: [],
-        followers: ['TarekId2'],
+        followings: {},
+        followers: {},
         email: 'Ziadhesham280@gmail.com'),
     UsersModel(
         id: 'TarekId2',
         name: 'Mohamed Tarek',
         imgPath: GlobalVariables.tarekImg,
-        isLoggedIn: false,
-        followings: ['ZiadId1'],
-        followers: [],
+        isLoggedIn: true,
+        followings: {},
+        followers: {},
         email: 'MohamedTarek1@gmail.com'),
     UsersModel(
         id: 'MostafaId2',
         name: 'Mostafa Ramadan',
         imgPath: GlobalVariables.mostafaImg,
         isLoggedIn: false,
-        followings: [],
-        followers: [],
+        followings: {},
+        followers: {},
         email: 'MostafaRamadan@gmail.com'),
   ];
   List<UsersModel> get users {
@@ -88,9 +88,8 @@ class UsersProvider with ChangeNotifier {
   }
 
 // follow functions
-  bool isContaining(firstId, secondId) {
-    var list = findUserById(firstId).followings;
-    return list.any((element) => element == secondId);
+  bool isContaining(Set<String> firstList, secondId) {
+    return firstList.any((element) => element == secondId);
   }
 
   void follow(firstId, secondId) {
@@ -98,20 +97,21 @@ class UsersProvider with ChangeNotifier {
       var firstFollowings = findUserById(firstId).followings;
       var secondFollowers = findUserById(secondId).followers;
 
-      // the second id index in the first list
-      var secondIndex = isContaining(firstId, secondId);
       // the first id index in the second list
-      var firstIndex = isContaining(secondId, firstId);
-      if (!secondIndex) {
-        firstFollowings.add(secondId);
-      } else {
-        firstFollowings.remove(secondId);
-      }
+      var firstIndex = isContaining(firstFollowings,secondId);
+      // the second id index in the first list
+      var secondIndex = isContaining(secondFollowers, firstId);
 
       if (!firstIndex) {
         secondFollowers.add(firstId);
       } else {
         secondFollowers.remove(firstId);
+      }
+
+      if (!secondIndex) {
+        firstFollowings.add(secondId);
+      } else {
+        firstFollowings.remove(secondId);
       }
     }
   }

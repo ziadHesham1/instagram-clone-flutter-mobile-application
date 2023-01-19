@@ -15,6 +15,7 @@ class FollowButtonWidget extends StatefulWidget {
 
 class _FollowButtonWidgetState extends State<FollowButtonWidget> {
   bool isFollowed = false;
+  bool aFollower = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,10 @@ class _FollowButtonWidgetState extends State<FollowButtonWidget> {
     var loggedInUser = userProvider.loggedInUser();
 
     if (loggedInUser != null && loggedInUser.id != widget.userId) {
-      isFollowed = userProvider.isContaining(loggedInUser.id, widget.userId);
+      isFollowed =
+          userProvider.isContaining(loggedInUser.followings, widget.userId);
+      aFollower =
+          userProvider.isContaining(loggedInUser.followers, widget.userId);
       return TextButton.icon(
         onPressed: () {
           setState(() {
@@ -35,7 +39,11 @@ class _FollowButtonWidgetState extends State<FollowButtonWidget> {
         icon: isFollowed
             ? GlobalWidgets.following_icon
             : GlobalWidgets.follow_icon,
-        label: Text(isFollowed ? 'Following' : 'Follow'),
+        label: Text(isFollowed
+            ? 'Following'
+            : aFollower
+                ? ('Follow Back')
+                : ('Follow')),
       );
     } else {
       return const SizedBox(
