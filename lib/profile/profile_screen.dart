@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/globals/global_widgets.dart';
 import 'package:instagram_clone/home_screen/posts/post/follow_button_widget.dart';
+import 'package:instagram_clone/main.dart';
 import 'package:instagram_clone/profile/follow_lists_checker.dart';
 import 'package:provider/provider.dart';
 
@@ -16,8 +17,8 @@ class ProfileScreen extends StatelessWidget {
     // MediaQueryData mediaQuery = MediaQuery.of(context);
 
     UsersProvider userProvider = Provider.of<UsersProvider>(context);
-    var loggedInUser = userProvider.loggedInUser();
-    var clickedPostUserId =
+    UsersModel? loggedInUser = userProvider.loggedInUser();
+    String? clickedPostUserId =
         ModalRoute.of(context)!.settings.arguments as String?;
 
     UsersModel? user;
@@ -32,20 +33,14 @@ class ProfileScreen extends StatelessWidget {
         title: const Text('Your Profile'),
       ),
       body: user != null
-          ? Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(20),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      buildProfilePicture(user),
-                      buildProfileDetails(user),
-                    ],
-                  ),
-                ),
-                FollowListsChecker(user,/* mediaQuery */),
-              ],
+          ? SingleChildScrollView(
+              child: Column(
+                children: [
+                  buildProfileDetails(user),
+                  buildProfileNumbers(user),
+                  // FollowListsChecker(user),
+                ],
+              ),
             )
           : const Text(
               'No Profile Found',
@@ -54,69 +49,81 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Container buildProfileDetails(UsersModel user) {
+  Widget buildProfileDetails(UsersModel user) {
     return Container(
-      margin: const EdgeInsets.all(15),
-      child: Column(
+      margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            user.name,
-            style: GlobalVariables.header,
+          CircleAvatar(
+            radius: 50.0,
+            backgroundImage: AssetImage(user.imgPath),
           ),
-          Text(user.email),
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FollowButtonWidget(user.id),
-              TextButton.icon(
-                  onPressed: () {},
-                  icon: GlobalWidgets.chat_icon,
-                  label: const Text('Chat')),
+              Text(
+                user.name,
+                style: GlobalVariables.header,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                user.email,
+                style: const TextStyle(color: GlobalVariables.primary_color),
+              ),
+              // follow and chat buttons
+              Row(
+                children: [
+                  Container(
+                      decoration: GlobalVariables.boxDecoration,
+                      child: FollowButtonWidget(user.id)),
+
+                  // chat button
+                  Container(
+                    margin: const EdgeInsets.all(10),
+                    decoration: GlobalVariables.boxDecoration,
+                    child: TextButton.icon(
+                        onPressed: () {},
+                        icon: GlobalWidgets.chat_icon,
+                        label: const Text('Chat')),
+                  ),
+                ],
+              )
             ],
-          )
+          ),
         ],
       ),
     );
   }
 
-  Widget buildProfilePicture(UsersModel user) {
-    return CircleAvatar(
-      radius: 50.0,
-      backgroundImage: AssetImage(user.imgPath
-          // : GlobalVariables.anonymousImg,
-          ),
+  Widget buildProfileNumbers(UsersModel user) {
+    return Container(
+      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
+      decoration: GlobalVariables.boxDecoration,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          buildNumberBox(100, 'Posts'),
+          buildNumberBox(user.followers.length, 'Followers'),
+          buildNumberBox(user.followings.length, 'Following'),
+        ],
+      ),
     );
   }
 
-  Widget buildUsersList(
-      String header, UsersProvider userProvider, List<String> userIdsList) {
+  Widget buildNumberBox(int number, String txt) {
     return Column(
       children: [
         Text(
-          header,
-          style: GlobalVariables.header,
+          '$number',
+          style: GlobalVariables.profile_details_text,
         ),
-        SizedBox(
-          width: 200,
-          height: 200,
-          child: ListView.builder(
-            itemCount: userIdsList.length,
-            itemBuilder: (context, index) {
-              var user = userProvider.findUserById(userIdsList[index]);
-              return ListTile(
-                // post publisher profile picture
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(user.imgPath),
-                ),
-                // post publisher user name
-                title: Text(
-                  user.name,
-                  style: GlobalVariables.bigger_text,
-                ),
-                // subtitle: Text('isLoggedIn : ${user.isLoggedIn}'),
-              );
-            },
-          ),
+        Text(
+          txt,
+          style: GlobalVariables.profile_details_text,
         ),
       ],
     );

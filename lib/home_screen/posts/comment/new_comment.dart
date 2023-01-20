@@ -36,7 +36,8 @@ class _NewCommentState extends State<NewComment> {
         controller: controller,
         onSubmitted: (value) {
           GlobalSnackbar.show(context, controller.text);
-          postProvider.addComment(
+         setState(() {
+            postProvider.addComment(
             widget.post.id,
             CommentModel(
               id: DateTime.now().toString(),
@@ -45,6 +46,7 @@ class _NewCommentState extends State<NewComment> {
               commentContent: controller.text,
             ),
           );
+         });
           controller.clear();
         },
       ),

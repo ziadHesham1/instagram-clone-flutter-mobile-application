@@ -18,11 +18,11 @@ class GlobalVariables {
 
 // radius
   static const double postBorderRadius = 6;
-     static const double newCommentRadius = 15;
-
+  static const double newCommentRadius = 15;
 
   // Global Colors
-  static const post_border_color = Colors.blueGrey;
+  static const primary_color = Colors.blueGrey;
+  static const TextStyle redText = TextStyle(color: Colors.red);
 
   // Global Styles
   static const TextStyle header = TextStyle(
@@ -33,13 +33,22 @@ class GlobalVariables {
     fontSize: 20,
     fontWeight: FontWeight.w500,
   );
-  static const TextStyle bigger_text = TextStyle(
+  static const TextStyle post_content_text = TextStyle(
     fontSize: 18,
     // fontWeight: FontWeight.w500,
+  );
+  static const TextStyle profile_details_text = TextStyle(
+    fontSize: 18,
+    color: primary_color,
+    fontWeight: FontWeight.w500,  
   );
 
   static const postTextStyle = TextStyle(
     fontSize: 18,
   );
-  static const TextStyle redText = TextStyle(color: Colors.red);
+
+  static BoxDecoration boxDecoration = BoxDecoration(
+    borderRadius: BorderRadius.circular(GlobalVariables.postBorderRadius),
+    border: Border.all(color: GlobalVariables.primary_color),
+  );
 }

@@ -41,12 +41,13 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         title: 'Arabian Social Media',
         theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,
             elevation: 0,
           ),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
+              .copyWith(secondary: Colors.black),
         ),
         routes: {
           '/': (context) => const HomeScreen(),

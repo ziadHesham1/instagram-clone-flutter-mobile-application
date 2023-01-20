@@ -22,7 +22,6 @@ class _FollowListsCheckerState extends State<FollowListsChecker> {
 
   @override
   Widget build(BuildContext context) {
-    UsersProvider userProvider = Provider.of<UsersProvider>(context);
     var mediaQuery = MediaQuery.of(context);
 
     widgetHeight = mediaQuery.size.height * 0.4;
@@ -31,24 +30,19 @@ class _FollowListsCheckerState extends State<FollowListsChecker> {
       children: [
         buildUsersList(
           'Followings',
-          userProvider,
           widget.user.followings,
         ),
         buildUsersList(
           'Followers',
-          userProvider,
           widget.user.followers,
         ),
       ],
     );
   }
 
-  Widget buildUsersList(
-    String header,
-    UsersProvider userProvider,
-    Set<String> userIdsList,
-  ) {
-    var loggedInUser = userProvider.loggedInUser();
+  Widget buildUsersList(String header, Set<String> userIdsList) {
+    UsersProvider userProvider = Provider.of<UsersProvider>(context);
+    UsersModel? loggedInUser = userProvider.loggedInUser();
 
     return Column(
       children: [
@@ -61,34 +55,20 @@ class _FollowListsCheckerState extends State<FollowListsChecker> {
           width: widgetWidth,
           margin: const EdgeInsets.all(10),
           // padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius:
-                BorderRadius.circular(GlobalVariables.postBorderRadius),
-            border: Border.all(color: GlobalVariables.post_border_color),
-          ),
+          decoration: GlobalVariables.boxDecoration,
           child: ListView.builder(
             itemCount: userIdsList.length,
             itemBuilder: (context, index) {
-              var user = userProvider.findUserById(userIdsList.elementAt(index));
+              var user =
+                  userProvider.findUserById(userIdsList.elementAt(index));
               return ListTile(
                 // post publisher profile picture
-
-                /*  InkWell(
-            onTap: () {
-              if (loggedInUser != null) {
-                Navigator.of(context).pushNamed(ProfileScreen.routeName);
-              } else {
-                GlobalSnackbar.showWithLoginAction(
-                  context,
-                  'You need to login to see your profile!!',
-                );
-              }
-            }, */
 
                 leading: InkWell(
                   onTap: () {
                     if (loggedInUser != null) {
-                      Navigator.of(context).pushNamed(ProfileScreen.routeName);
+                      Navigator.of(context).pushNamed(ProfileScreen.routeName,
+                          arguments: user.id);
                     } else {
                       GlobalSnackbar.showWithLoginAction(
                         context,
@@ -103,7 +83,7 @@ class _FollowListsCheckerState extends State<FollowListsChecker> {
                 // post publisher user name
                 title: Text(
                   user.name,
-                  style: GlobalVariables.bigger_text,
+                  style: GlobalVariables.post_content_text,
                 ),
                 // subtitle: Text('isLoggedIn : ${user.isLoggedIn}'),
               );
