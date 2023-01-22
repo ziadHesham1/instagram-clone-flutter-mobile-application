@@ -20,7 +20,9 @@ class PostInteractionWidget extends StatefulWidget {
 class _PostInteractionWidgetState extends State<PostInteractionWidget> {
   @override
   Widget build(BuildContext context) {
-    var providedPosts = Provider.of<PostsProvider>(context);
+    print('PostInteractionWidget build method called');
+
+    PostsProvider providedPosts = Provider.of<PostsProvider>(context);
     PostModel post = providedPosts.findPostById(widget.postId);
     var loggedInUser = Provider.of<UsersProvider>(context).loggedInUser();
     return Padding(
@@ -34,7 +36,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
           // comments button
           buildCommentButton(providedPosts, post, loggedInUser),
           // show comments button
-          buildShowCommentButton(context, post)
+          buildShowCommentButton(context, post) /* !NOT WORKING !!!!! */
         ],
       ),
     );
@@ -47,6 +49,40 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
         onPressed: () {});
   }
 // replace it with the button with comment icon when new comment is ready
+
+  Widget buildCommentButton(providedPosts, PostModel post, loggedInUser) {
+    return TextButton.icon(
+      icon: GlobalWidgets.comment_icon,
+      label: Text('${post.comments.length}'),
+      onPressed: () {
+        setState(
+          () {
+            if (loggedInUser != null) {
+              var commentContent2 =
+                  '${post.userId} ${GlobalVariables.longText}';
+              providedPosts.addComment(
+                post.id,
+                CommentModel(
+                  id: DateTime.now.toString(),
+                  userId: loggedInUser.id,
+                  publishTime: DateTime.now(),
+                  commentContent: commentContent2,
+                ),
+              );
+              GlobalSnackbar.show(context,
+                  '${loggedInUser.name} added this comment : $commentContent2');
+            } else {
+              GlobalSnackbar.showWithLoginAction(
+                context,
+                'You need to login to add a comment!!',
+              );
+            }
+          },
+        );
+      },
+    );
+  }
+
   Widget buildShowCommentButton(BuildContext context, PostModel post) {
     return TextButton(
         onPressed: () {
@@ -56,48 +92,5 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
           });
         },
         child: const Text('Show Comments'));
-  }
-
-  Widget buildCommentButton(providedPosts,PostModel post, loggedInUser) {
-    return TextButton.icon(
-        icon: GlobalWidgets.comment_icon,
-        label: Text('${post.comments.length}'),
-        onPressed: () {
-          setState(
-            () {
-              if (loggedInUser != null) {
-                var commentContent2 =
-                    '${post.userId} ${GlobalVariables.longText}';
-                providedPosts.addComment(
-                  post.id,
-                  CommentModel(
-                    id: DateTime.now.toString(),
-                    userId: loggedInUser.id,
-                    publishTime: DateTime.now(),
-                    commentContent: commentContent2,
-                  ),
-                );
-                GlobalSnackbar.show(context,
-                    '${loggedInUser.name} added this comment : $commentContent2');
-              } else {
-                GlobalSnackbar.showWithLoginAction(
-                  context,
-                  'You need to login to add a comment!!',
-                );
-              }
-            },
-          );
-        });
-  }
-
-  void buildSnackBar(ctx, String content) {
-    ScaffoldMessenger.of(ctx).hideCurrentSnackBar();
-    ScaffoldMessenger.of(ctx).showSnackBar(
-      SnackBar(
-        content: Text(content),
-        duration: const Duration(seconds: 2),
-        action: SnackBarAction(label: 'LOGIN', onPressed: () {}),
-      ),
-    );
   }
 }

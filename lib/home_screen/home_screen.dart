@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../core/globals/global_variables.dart';
 import '../core/globals/global_widgets/global_snackbar.dart';
+import '../core/providers/posts_provider.dart';
 import '../core/providers/users_provider.dart';
 import '../profile/profile_screen.dart';
 import 'app_drawer.dart';
@@ -16,8 +17,12 @@ class HomeScreen extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+        print('Home screen build method called');
+
     var userProvider = Provider.of<UsersProvider>(context);
     var loggedInUser = userProvider.loggedInUser();
+    List<PostModel> posts = Provider.of<PostsProvider>(context).posts;
+
     return Scaffold(
       key: GlobalVariables.homeScaffoldKey,
       appBar: AppBar(
@@ -55,13 +60,11 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            children: const [
-              Status(),
-              NewPost(),
-              SizedBox(
-                height: 20,
-              ),
-              PostsView(),
+            children: [
+              const Status(),
+              const NewPost(),
+              const SizedBox(height: 20),
+              PostsView(posts),
             ],
           ),
         ),

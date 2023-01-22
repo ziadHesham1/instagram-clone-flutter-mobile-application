@@ -21,6 +21,7 @@ class _NewCommentState extends State<NewComment> {
 
   @override
   Widget build(BuildContext context) {
+    print('NewComment build method called');
     var postProvider = Provider.of<PostsProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -35,18 +36,16 @@ class _NewCommentState extends State<NewComment> {
         ),
         controller: controller,
         onSubmitted: (value) {
-          GlobalSnackbar.show(context, controller.text);
-         setState(() {
+          // GlobalSnackbar.show(context, controller.text);
+          setState(() {
             postProvider.addComment(
-            widget.post.id,
-            CommentModel(
-              id: DateTime.now().toString(),
-              userId: widget.post.userId,
-              publishTime: DateTime.now(),
-              commentContent: controller.text,
-            ),
-          );
-         });
+              widget.post.id,
+              'comment ${DateTime.now().toString()}',
+              widget.post.userId,
+              DateTime.now(),
+              value,
+            );
+          });
           controller.clear();
         },
       ),

@@ -28,7 +28,8 @@ class PostsProvider with ChangeNotifier {
       id: 'Postid1',
       userId: 'ZiadId1',
       postPublishTime: DateTime.now(),
-      postContent: 'I found something to share with you .. please let me  know if it bad ',
+      postContent:
+          'I found something to share with you .. please let me  know if it bad ',
       comments: [],
       likesNumber: 15,
     ),
@@ -59,6 +60,10 @@ class PostsProvider with ChangeNotifier {
   ];
   List<PostModel> get posts => [..._posts];
 
+  List<PostModel> userPosts(userId) {
+    return _posts.where((post) => post.userId == userId).toList();
+  }
+
   void addPost(PostModel newPost) {
     _posts.add(newPost);
     notifyListeners();
@@ -67,10 +72,14 @@ class PostsProvider with ChangeNotifier {
   PostModel findPostById(postId) =>
       _posts.firstWhere((post) => post.id == postId);
 
-  void addComment(postId, CommentModel newComment) {
+  void addComment(postId, commentId, userId, publishTime, commentContent) {
     var firstWhere = findPostById(postId);
-    firstWhere.comments.add(newComment);
+    firstWhere.comments.add(CommentModel(
+        id: commentId,
+        userId: userId,
+        publishTime: publishTime,
+        commentContent: commentContent));
+    print('comment $commentContent is added to post with id $postId');
     notifyListeners();
   }
 }
-  

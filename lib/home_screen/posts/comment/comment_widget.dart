@@ -15,6 +15,8 @@ class CommentWidget extends StatelessWidget {
     var user = Provider.of<UsersProvider>(context).findUserById(comment.userId);
     var commentPublishTime =
         DateTime.now().difference(comment.publishTime).inMinutes.toString();
+    print(
+        'CommentWidget of comment ${comment.commentContent} build method called');
     return Container(
       margin: const EdgeInsets.all(5),
       padding: const EdgeInsets.only(bottom: 15),

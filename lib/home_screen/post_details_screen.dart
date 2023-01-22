@@ -26,7 +26,12 @@ class PostDetailsScreen extends StatelessWidget {
           children: [
             PostWidget(post.id),
             NewComment(post),
-           
+           /*  Consumer<PostsProvider>(
+              builder: (context, postProvider, child) {
+                return CommentsWidget(
+                    postProvider.findPostById(post.id).comments);
+              },
+            ) */
             CommentsWidget(comments.reversed.toList()),
 
             /*  Container(

@@ -10,6 +10,7 @@ class UsersModel {
   final String email;
   final String imgPath;
   bool isLoggedIn;
+  List<String> postsIds;
   Set<String> followings;
   Set<String> followers;
 
@@ -18,6 +19,7 @@ class UsersModel {
     required this.name,
     required this.imgPath,
     required this.isLoggedIn,
+    required this.postsIds,
     required this.followings,
     required this.followers,
     required this.email,
@@ -31,6 +33,7 @@ class UsersProvider with ChangeNotifier {
         name: 'Ziad Hesham',
         imgPath: GlobalVariables.ziadImg,
         isLoggedIn: false,
+        postsIds:['Postid1','Postid5'],
         followings: {},
         followers: {},
         email: 'Ziadhesham280@gmail.com'),
@@ -39,6 +42,7 @@ class UsersProvider with ChangeNotifier {
         name: 'Mohamed Tarek',
         imgPath: GlobalVariables.tarekImg,
         isLoggedIn: true,
+        postsIds:['Postid2'],
         followings: {},
         followers: {},
         email: 'MohamedTarek1@gmail.com'),
@@ -47,6 +51,7 @@ class UsersProvider with ChangeNotifier {
         name: 'Mostafa Ramadan',
         imgPath: GlobalVariables.mostafaImg,
         isLoggedIn: false,
+        postsIds:['Postid3'],
         followings: {},
         followers: {},
         email: 'MostafaRamadan@gmail.com'),
@@ -98,7 +103,7 @@ class UsersProvider with ChangeNotifier {
       var secondFollowers = findUserById(secondId).followers;
 
       // the first id index in the second list
-      var firstIndex = isContaining(firstFollowings,secondId);
+      var firstIndex = isContaining(firstFollowings, secondId);
       // the second id index in the first list
       var secondIndex = isContaining(secondFollowers, firstId);
 

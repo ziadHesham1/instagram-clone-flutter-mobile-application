@@ -48,4 +48,5 @@ class CommentsProvider with ChangeNotifier {
 
   CommentModel findCommentById(commentPublisherId) =>
       _comments.firstWhere((comments) => comments.id == commentPublisherId);
- */}
+ */
+}

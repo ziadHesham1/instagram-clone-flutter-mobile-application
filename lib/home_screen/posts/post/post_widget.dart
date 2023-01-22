@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/core/globals/global_border_box.dart';
 import 'package:instagram_clone/profile/profile_screen.dart';
 
 import 'package:provider/provider.dart';
@@ -26,6 +27,7 @@ class _PostWidgetState extends State<PostWidget> {
     var user = userProvider.findUserById(post.userId);
     var postPublishTime =
         DateTime.now().difference(post.postPublishTime).inMinutes.toString();
+    print('PostWidget with post id ${post.id} build method called');
 
     return Container(
       margin: const EdgeInsets.all(10),
@@ -37,7 +39,8 @@ class _PostWidgetState extends State<PostWidget> {
           ListTile(
             // open profile screen of the post publisher user
             onTap: () => setState(() {
-              Navigator.of(context).pushNamed(ProfileScreen.routeName,arguments: user.id);
+              Navigator.of(context)
+                  .pushNamed(ProfileScreen.routeName, arguments: user.id);
             }),
             // post publisher profile picture
             leading: CircleAvatar(
@@ -60,8 +63,8 @@ class _PostWidgetState extends State<PostWidget> {
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child:
-                  Text(post.postContent, style: GlobalVariables.postTextStyle),
+              child: Text(post.postContent,
+                  style: GlobalVariables.userNameTextStyle),
             ),
           ),
           // like and comment buttons

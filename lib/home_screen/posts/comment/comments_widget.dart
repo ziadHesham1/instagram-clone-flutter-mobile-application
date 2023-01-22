@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/home_screen/posts/comment/new_comment.dart';
 
+import '../../../core/globals/global_variables.dart';
 import '../../../core/providers/comment_provider.dart';
 import 'comment_widget.dart';
 
@@ -9,6 +11,8 @@ class CommentsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        print('CommentsWidget build method called');
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -17,18 +21,9 @@ class CommentsWidget extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Text(
               'Comments',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800),
+              style: GlobalVariables.sectionTitleTextStyle,
             ),
           ),
-          /*  Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: commentsList.length,
-              itemBuilder: (context, index) {
-                return Text(commentsList[index].commentContent);
-              },
-            ),
-          ), */
           ...commentsList.map(
             (CommentModel comment) => CommentWidget(comment),
           ),

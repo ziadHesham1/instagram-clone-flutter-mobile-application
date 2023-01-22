@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/core/globals/global_border_box.dart';
 
 import '../global_variables.dart';
 

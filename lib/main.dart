@@ -25,14 +25,14 @@ class _MyAppState extends State<MyApp> {
   } */
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext  context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (BuildContext context) => UsersProvider(),
         ),
-        ChangeNotifierProvider(
-          create: (BuildContext context) => PostsProvider(),
+        ChangeNotifierProvider.value(
+          value: PostsProvider(),
         ),
         ChangeNotifierProvider(
           create: (BuildContext context) => CommentsProvider(),

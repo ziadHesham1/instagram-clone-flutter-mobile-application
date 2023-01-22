@@ -40,12 +40,21 @@ class GlobalVariables {
   static const TextStyle profile_details_text = TextStyle(
     fontSize: 18,
     color: primary_color,
-    fontWeight: FontWeight.w500,  
+    fontWeight: FontWeight.w500,
   );
+  static const sectionTitleTextStyle =
+      TextStyle(fontSize: 28, fontWeight: FontWeight.w800);
 
   static const postTextStyle = TextStyle(
     fontSize: 18,
   );
+  static const userNameTextStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
+
+  // margins
+  static const borderBoxMargin = EdgeInsets.all(10);
 
   static BoxDecoration boxDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(GlobalVariables.postBorderRadius),
