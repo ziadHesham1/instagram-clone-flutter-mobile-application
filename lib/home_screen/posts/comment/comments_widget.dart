@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/home_screen/posts/comment/new_comment.dart';
 
 import '../../../core/globals/global_variables.dart';
 import '../../../core/providers/comment_provider.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/globals/global_border_box.dart';
 import 'package:instagram_clone/profile/profile_screen.dart';
 
 import 'package:provider/provider.dart';

@@ -4,7 +4,6 @@ import 'package:instagram_clone/core/globals/global_widgets/global_snackbar.dart
 import 'package:provider/provider.dart';
 
 import '../../../core/globals/global_variables.dart';
-import '../../../core/providers/comment_provider.dart';
 import '../../../core/providers/posts_provider.dart';
 import '../../../core/globals/global_widgets.dart';
 import '../../post_details_screen.dart';
@@ -50,7 +49,8 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
   }
 // replace it with the button with comment icon when new comment is ready
 
-  Widget buildCommentButton(providedPosts, PostModel post, loggedInUser) {
+  Widget buildCommentButton(
+      PostsProvider providedPosts, PostModel post, loggedInUser) {
     return TextButton.icon(
       icon: GlobalWidgets.comment_icon,
       label: Text('${post.comments.length}'),
@@ -62,12 +62,10 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
                   '${post.userId} ${GlobalVariables.longText}';
               providedPosts.addComment(
                 post.id,
-                CommentModel(
-                  id: DateTime.now.toString(),
-                  userId: loggedInUser.id,
-                  publishTime: DateTime.now(),
-                  commentContent: commentContent2,
-                ),
+                DateTime.now.toString(),
+                loggedInUser.id,
+                DateTime.now(),
+                commentContent2,
               );
               GlobalSnackbar.show(context,
                   '${loggedInUser.name} added this comment : $commentContent2');

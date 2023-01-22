@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/home_screen/posts/comment/new_comment.dart';
-import '../../../core/providers/comment_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../core/providers/posts_provider.dart';
 import 'posts/comment/comments_widget.dart';
@@ -14,7 +14,6 @@ class PostDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PostModel post = ModalRoute.of(context)!.settings.arguments as PostModel;
-    List<CommentModel> comments = post.comments;
 
     return Scaffold(
       appBar: AppBar(
@@ -26,13 +25,13 @@ class PostDetailsScreen extends StatelessWidget {
           children: [
             PostWidget(post.id),
             NewComment(post),
-           /*  Consumer<PostsProvider>(
+            Consumer<PostsProvider>(
               builder: (context, postProvider, child) {
                 return CommentsWidget(
                     postProvider.findPostById(post.id).comments);
               },
-            ) */
-            CommentsWidget(comments.reversed.toList()),
+            )
+            // CommentsWidget(comments.reversed.toList()),
 
             /*  Container(
           alignment: Alignment.bottomCenter, // align the row

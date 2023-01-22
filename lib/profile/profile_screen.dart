@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/globals/global_border_box.dart';
-import 'package:instagram_clone/core/globals/global_widgets.dart';
-import 'package:instagram_clone/core/providers/posts_provider.dart';
-import 'package:instagram_clone/home_screen/posts/post/follow_button_widget.dart';
-import 'package:instagram_clone/home_screen/posts/post/posts_view_widget.dart';
 import 'package:instagram_clone/profile/profile_posts_widget.dart';
 import 'package:instagram_clone/profile/profile_summery_widget.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +17,6 @@ class ProfileScreen extends StatelessWidget {
     UsersModel? loggedInUser = userProvider.loggedInUser();
     String? clickedPostUserId =
         ModalRoute.of(context)!.settings.arguments as String?;
-    PostsProvider postProvider = Provider.of<PostsProvider>(context);
 
     UsersModel? user;
     if (clickedPostUserId != null) {
@@ -40,9 +34,8 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   ProfileDetailsWidget(user),
                   ProfileSummeryWidget(
-                    user,
+                    user
                   ),
-                  // FollowListsChecker(user),
                   ProfilePostsWidget(user),
                 ],
               ),
