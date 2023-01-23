@@ -33,9 +33,7 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ProfileDetailsWidget(user),
-                  ProfileSummeryWidget(
-                    user
-                  ),
+                  ProfileSummeryWidget(user),
                   ProfilePostsWidget(user),
                 ],
               ),

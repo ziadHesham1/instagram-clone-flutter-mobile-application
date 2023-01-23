@@ -26,7 +26,7 @@ class PostsProvider with ChangeNotifier {
   final List<PostModel> _posts = [
     PostModel(
       id: 'Postid1',
-      userId: 'ZiadId1',
+      userId: 'AhmedId1',
       postPublishTime: DateTime.now(),
       postContent:
           'I found something to share with you .. please let me  know if it bad ',

@@ -83,7 +83,7 @@ class _FollowListsCheckerState extends State<FollowListsChecker> {
                 // post publisher user name
                 title: Text(
                   user.name,
-                  style: GlobalVariables.post_content_text,
+                  style: GlobalVariables.post_content_text_style,
                 ),
                 // subtitle: Text('isLoggedIn : ${user.isLoggedIn}'),
               );

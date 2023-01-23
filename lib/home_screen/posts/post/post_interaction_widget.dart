@@ -23,7 +23,8 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
 
     PostsProvider providedPosts = Provider.of<PostsProvider>(context);
     PostModel post = providedPosts.findPostById(widget.postId);
-    var loggedInUser = Provider.of<UsersProvider>(context).loggedInUser();
+    UsersModel? loggedInUser =
+        Provider.of<UsersProvider>(context).loggedInUser();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -35,7 +36,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
           // comments button
           buildCommentButton(providedPosts, post, loggedInUser),
           // show comments button
-          buildShowCommentButton(context, post) /* !NOT WORKING !!!!! */
+          buildShowCommentButton(context, post)
         ],
       ),
     );
@@ -50,7 +51,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
 // replace it with the button with comment icon when new comment is ready
 
   Widget buildCommentButton(
-      PostsProvider providedPosts, PostModel post, loggedInUser) {
+      PostsProvider providedPosts, PostModel post,UsersModel? loggedInUser) {
     return TextButton.icon(
       icon: GlobalWidgets.comment_icon,
       label: Text('${post.comments.length}'),

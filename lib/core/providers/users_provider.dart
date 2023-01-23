@@ -29,11 +29,20 @@ class UsersModel {
 class UsersProvider with ChangeNotifier {
   final List<UsersModel> _users = [
     UsersModel(
+        id: 'AhmedId1',
+        name: 'Ahmed Elsayed',
+        imgPath: GlobalVariables.anonymousImg,
+        isLoggedIn: false,
+        postsIds:['Postid1'],
+        followings: {},
+        followers: {},
+        email: 'AhmedElsayed12@gmail.com'),
+         UsersModel(
         id: 'ZiadId1',
         name: 'Ziad Hesham',
         imgPath: GlobalVariables.ziadImg,
         isLoggedIn: false,
-        postsIds:['Postid1','Postid5'],
+        postsIds:['Postid5'],
         followings: {},
         followers: {},
         email: 'Ziadhesham280@gmail.com'),

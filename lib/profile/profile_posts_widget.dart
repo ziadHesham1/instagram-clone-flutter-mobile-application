@@ -7,15 +7,15 @@ import '../core/providers/users_provider.dart';
 import '../home_screen/posts/post/posts_view_widget.dart';
 
 class ProfilePostsWidget extends StatelessWidget {
- final UsersModel user;
+  final UsersModel user;
   const ProfilePostsWidget(this.user, {super.key});
 
   @override
   Widget build(BuildContext context) {
-     PostsProvider postProvider = Provider.of<PostsProvider>(context);
+    PostsProvider postProvider = Provider.of<PostsProvider>(context);
 
     var userPosts = postProvider.userPosts(user.id);
-   
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,13 +23,11 @@ class ProfilePostsWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: Text(
             'Posts (${userPosts.length})',
-            style: GlobalVariables.sectionTitleTextStyle,
+            style: GlobalVariables.subTitleTextStyle,
           ),
         ),
         PostsView(userPosts),
       ],
     );
   }
-
- 
 }

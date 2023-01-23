@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Arabian Social Media',
+          style: TextStyle(fontWeight: FontWeight.w400),
         ),
         actions: [
           // appbar profile picture

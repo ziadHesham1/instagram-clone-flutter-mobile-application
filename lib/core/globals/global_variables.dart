@@ -21,37 +21,40 @@ class GlobalVariables {
   static const double newCommentRadius = 15;
 
   // Global Colors
-  static const primary_color = Colors.blueGrey;
+  static const primary_color = Colors.grey;
   static const TextStyle redText = TextStyle(color: Colors.red);
 
   // Global Styles
-  static const TextStyle header = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle smaller_header = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle post_content_text = TextStyle(
-    fontSize: 18,
-    // fontWeight: FontWeight.w500,
-  );
-  static const TextStyle profile_details_text = TextStyle(
-    fontSize: 18,
-    color: primary_color,
-    fontWeight: FontWeight.w500,
-  );
-  static const sectionTitleTextStyle =
-      TextStyle(fontSize: 28, fontWeight: FontWeight.w800);
 
-  static const postTextStyle = TextStyle(
+  static const primaryColorTextStyle = TextStyle(color: primary_color);
+
+  static const FontWeight fontWeight500 = FontWeight.w500;
+
+  static const TextStyle post_content_text_style = TextStyle(fontSize: 18);
+
+  static const TextStyle weight500TextStyle =
+      TextStyle(fontWeight: fontWeight500);
+
+  static const TextStyle header =
+      TextStyle(fontSize: 20, fontWeight: fontWeight500);
+
+  static const subTitleTextStyle =
+      TextStyle(fontSize: 20, fontWeight: FontWeight.w600);
+
+  static const postContentTextStyle =
+      TextStyle(fontSize: 18, fontWeight: fontWeight500);
+  static const usernameTextStyle =
+      TextStyle(fontSize: 16, fontWeight: fontWeight500);
+
+  static const TextStyle profile_details_text =
+      TextStyle(fontSize: 18, color: primary_color, fontWeight: fontWeight500);
+  /* static const postTextStyle = TextStyle(
     fontSize: 18,
-  );
-  static const userNameTextStyle = TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
-  );
+  ); */
+  /*  static const TextStyle smaller_header = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.fontWeight500,
+  ); */
 
   // margins
   static const borderBoxMargin = EdgeInsets.all(10);

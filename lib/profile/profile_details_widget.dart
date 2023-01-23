@@ -16,9 +16,12 @@ class ProfileDetailsWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 50.0,
-            backgroundImage: AssetImage(user.imgPath),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: CircleAvatar(
+              radius: 50.0,
+              backgroundImage: AssetImage(user.imgPath),
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,13 +30,12 @@ class ProfileDetailsWidget extends StatelessWidget {
                 user.name,
                 style: GlobalVariables.header,
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Text(
                 user.email,
                 style: const TextStyle(color: GlobalVariables.primary_color),
               ),
+              const SizedBox(height: 5),
               // follow and chat buttons
               Row(
                 children: [

@@ -10,17 +10,17 @@ class CommentsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        print('CommentsWidget build method called');
+    print('CommentsWidget build method called');
 
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Comments',
-              style: GlobalVariables.sectionTitleTextStyle,
+              'Comments (${commentsList.length})',
+              style: GlobalVariables.subTitleTextStyle,
             ),
           ),
           ...commentsList.map(

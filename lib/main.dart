@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/core/globals/global_variables.dart';
 import 'package:instagram_clone/core/providers/users_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
             foregroundColor: Colors.black,
             elevation: 0,
           ),
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: GlobalVariables.primary_color)
               .copyWith(secondary: Colors.black),
         ),
         routes: {

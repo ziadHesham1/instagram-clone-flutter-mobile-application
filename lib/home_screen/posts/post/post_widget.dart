@@ -46,7 +46,10 @@ class _PostWidgetState extends State<PostWidget> {
               backgroundImage: AssetImage(user.imgPath),
             ),
             // post publisher user name
-            title: Text(user.name),
+            title: Text(
+              user.name,
+              style: GlobalVariables.usernameTextStyle,
+            ),
             // post date
             subtitle: Text('$postPublishTime min'),
             // follow button
@@ -63,7 +66,7 @@ class _PostWidgetState extends State<PostWidget> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(post.postContent,
-                  style: GlobalVariables.userNameTextStyle),
+                  style: GlobalVariables.postContentTextStyle),
             ),
           ),
           // like and comment buttons

@@ -5,32 +5,37 @@ import 'package:provider/provider.dart';
 
 import '../../../core/providers/posts_provider.dart';
 
-class NewComment extends StatefulWidget {
+class NewCommentWidget extends StatefulWidget {
   final PostModel post;
 
-  const NewComment(this.post, {super.key});
+  const NewCommentWidget(this.post, {super.key});
 
   @override
-  State<NewComment> createState() => _NewCommentState();
+  State<NewCommentWidget> createState() => _NewCommentWidgetState();
 }
 
-class _NewCommentState extends State<NewComment> {
+class _NewCommentWidgetState extends State<NewCommentWidget> {
   TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     print('NewComment build method called');
     var postProvider = Provider.of<PostsProvider>(context);
+    const outlineInputBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.all(
+        Radius.circular(
+          GlobalVariables.newCommentRadius,
+        ),
+      ),
+    );
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
+          suffixIcon:
+              IconButton(onPressed: () {}, icon: const Icon(Icons.send)),
           labelText: 'add a comment',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(GlobalVariables.newCommentRadius),
-            ),
-          ),
+          border: outlineInputBorder,
         ),
         controller: controller,
         onSubmitted: (value) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/home_screen/posts/comment/new_comment.dart';
+import 'package:instagram_clone/home_screen/posts/comment/new_comment_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../core/providers/posts_provider.dart';
@@ -24,7 +24,7 @@ class PostDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             PostWidget(post.id),
-            NewComment(post),
+            NewCommentWidget(post),
             Consumer<PostsProvider>(
               builder: (context, postProvider, child) {
                 return CommentsWidget(
