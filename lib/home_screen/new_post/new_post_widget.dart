@@ -51,7 +51,7 @@ class _NewPostWidgetState extends State<NewPostWidget> {
       ),
     );
 
-    InputDecoration inputDecoration = InputDecoration(
+    var inputDecoration = InputDecoration(
       label: const Padding(
         padding: EdgeInsets.all(8.0),
         child: Text('say something ...'),

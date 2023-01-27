@@ -1,4 +1,3 @@
-// import 'package:comment_box/comment/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/globals/global_variables.dart';
 import 'package:provider/provider.dart';
