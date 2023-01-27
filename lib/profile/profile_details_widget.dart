@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/providers/users_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../core/globals/global_variables.dart';
 import '../core/globals/global_widgets.dart';
@@ -11,6 +12,7 @@ class ProfileDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Row(
@@ -39,9 +41,9 @@ class ProfileDetailsWidget extends StatelessWidget {
               // follow and chat buttons
               Row(
                 children: [
-                  Container(
-                      decoration: GlobalVariables.boxDecoration,
-                      child: FollowButtonWidget(user.id)),
+                    Container(
+                        decoration: GlobalVariables.boxDecoration,
+                        child: FollowButtonWidget(user.id)),
 
                   // chat button
                   Container(

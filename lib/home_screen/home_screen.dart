@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-        print('Home screen build method called');
+    print('Home screen build method called');
 
     var userProvider = Provider.of<UsersProvider>(context);
     var loggedInUser = userProvider.loggedInUser();
@@ -63,9 +63,9 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               const Status(),
-              const NewPost(),
+              const NewPostWidget(canPost: false),
               const SizedBox(height: 20),
-              PostsView(posts),
+              PostsView(posts.reversed.toList()),
             ],
           ),
         ),

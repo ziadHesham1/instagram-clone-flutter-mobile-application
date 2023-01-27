@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/providers/posts_provider.dart';
 import 'package:instagram_clone/home_screen/posts/post/post_widget.dart';
+import 'package:provider/provider.dart';
 
 class PostsView extends StatelessWidget {
   final List<PostModel> posts;
@@ -8,12 +9,16 @@ class PostsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        print('PostsView build method called');
+    print('PostsView build method called');
 
-    return Column(children: [
-      ...posts.map(
-        (PostModel post) => PostWidget(post.id),
-      ),
-    ]);
+    return Consumer(
+      builder: (BuildContext context, value, _) {
+        return Column(children: [
+          ...posts.map(
+            (PostModel post) => PostWidget(post.id),
+          ),
+        ]);
+      },
+    );
   }
 }

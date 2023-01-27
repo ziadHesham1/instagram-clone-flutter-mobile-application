@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/core/globals/global_variables.dart';
 import 'package:instagram_clone/core/providers/users_provider.dart';
+import 'package:instagram_clone/home_screen/new_post/new_post_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'core/providers/comment_provider.dart';
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   } */
 
   @override
-  Widget build(BuildContext  context) {
+  Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -47,13 +48,15 @@ class _MyAppState extends State<MyApp> {
             foregroundColor: Colors.black,
             elevation: 0,
           ),
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: GlobalVariables.primary_color)
+          colorScheme: ColorScheme.fromSwatch(
+                  primarySwatch: GlobalVariables.primary_color)
               .copyWith(secondary: Colors.black),
         ),
         routes: {
           '/': (context) => const HomeScreen(),
           PostDetailsScreen.routeName: (context) => const PostDetailsScreen(),
           ProfileScreen.routeName: (context) => const ProfileScreen(),
+          NewPostScreen.routeName: (context) => const NewPostScreen(),
         },
       ),
     );

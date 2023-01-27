@@ -21,7 +21,7 @@ class GlobalVariables {
   static const double newCommentRadius = 15;
 
   // Global Colors
-  static const primary_color = Colors.grey;
+  static const primary_color = Colors.blueGrey;
   static const TextStyle redText = TextStyle(color: Colors.red);
 
   // Global Styles

@@ -23,7 +23,14 @@ class PostModel {
 }
 
 class PostsProvider with ChangeNotifier {
-  final List<PostModel> _posts = [
+
+ PostsProvider() {
+    print('PostsProvider constructor called');
+  }
+
+
+  final List<PostModel> _posts = [];
+  /*  final List<PostModel> _posts = [
     PostModel(
       id: 'Postid1',
       userId: 'AhmedId1',
@@ -58,19 +65,32 @@ class PostsProvider with ChangeNotifier {
       likesNumber: 15,
     ),
   ];
+  */
   List<PostModel> get posts => [..._posts];
 
   List<PostModel> userPosts(userId) {
     return _posts.where((post) => post.userId == userId).toList();
   }
 
-  void addPost(PostModel newPost) {
-    _posts.add(newPost);
+  void addPost(String postId, String userId, DateTime postPublishTime,
+      String postContent) {
+    _posts.add(PostModel(
+      id: postId,
+      userId: userId,
+      postPublishTime: postPublishTime,
+      postContent: postContent,
+      comments: [],
+      likesNumber: 0,
+    ));
+    print(
+        'We caught the user withId $userId adding a post contains $postContent');
+
     notifyListeners();
   }
 
-  PostModel findPostById(postId) =>
-      _posts.firstWhere((post) => post.id == postId);
+  PostModel findPostById(postId) {
+    return _posts.firstWhere((post) => post.id == postId);
+  }
 
   void addComment(postId, commentId, userId, publishTime, commentContent) {
     var firstWhere = findPostById(postId);
