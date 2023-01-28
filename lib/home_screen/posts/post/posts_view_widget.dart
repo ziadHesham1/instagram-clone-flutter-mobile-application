@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/providers/posts_provider.dart';
-import 'package:instagram_clone/home_screen/posts/post/post_widget.dart';
+import 'package:InstaClone/core/providers/posts_provider.dart';
+import 'package:InstaClone/home_screen/posts/post/post_widget.dart';
 import 'package:provider/provider.dart';
 
 class PostsView extends StatelessWidget {

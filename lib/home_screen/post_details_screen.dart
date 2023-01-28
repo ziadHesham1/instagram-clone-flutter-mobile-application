@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/home_screen/posts/comment/new_comment_widget.dart';
+import 'package:InstaClone/home_screen/posts/comment/new_comment_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../core/providers/posts_provider.dart';

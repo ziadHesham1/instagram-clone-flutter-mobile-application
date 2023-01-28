@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/globals/global_widgets/global_snackbar.dart';
+import 'package:InstaClone/core/globals/global_widgets/global_snackbar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/globals/global_widgets.dart';

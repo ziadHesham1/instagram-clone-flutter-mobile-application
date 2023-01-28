@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/providers/comment_provider.dart';
+import 'package:InstaClone/core/providers/comment_provider.dart';
 
 import 'package:provider/provider.dart';
 

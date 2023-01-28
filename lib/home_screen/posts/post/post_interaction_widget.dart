@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/providers/users_provider.dart';
-import 'package:instagram_clone/core/globals/global_widgets/global_snackbar.dart';
+import 'package:InstaClone/core/providers/users_provider.dart';
+import 'package:InstaClone/core/globals/global_widgets/global_snackbar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/globals/global_variables.dart';
@@ -51,7 +51,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
 // replace it with the button with comment icon when new comment is ready
 
   Widget buildCommentButton(
-      PostsProvider providedPosts, PostModel post,UsersModel? loggedInUser) {
+      PostsProvider providedPosts, PostModel post, UsersModel? loggedInUser) {
     return TextButton.icon(
       icon: GlobalWidgets.comment_icon,
       label: Text('${post.comments.length}'),

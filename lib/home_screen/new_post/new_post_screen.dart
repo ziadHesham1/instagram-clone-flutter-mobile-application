@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/core/providers/users_provider.dart';
-import 'package:instagram_clone/home_screen/new_post/new_post_widget.dart';
+import 'package:InstaClone/core/providers/users_provider.dart';
+import 'package:InstaClone/home_screen/new_post/new_post_widget.dart';
 import 'package:provider/provider.dart';
 
 class NewPostScreen extends StatefulWidget {

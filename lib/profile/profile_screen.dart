@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/profile/profile_posts_widget.dart';
-import 'package:instagram_clone/profile/profile_summery_widget.dart';
+import 'package:InstaClone/profile/profile_posts_widget.dart';
+import 'package:InstaClone/profile/profile_summery_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../core/globals/global_variables.dart';

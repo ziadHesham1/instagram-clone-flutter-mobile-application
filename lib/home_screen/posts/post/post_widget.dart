@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/profile/profile_screen.dart';
+import 'package:InstaClone/profile/profile_screen.dart';
 
 import 'package:provider/provider.dart';
 
