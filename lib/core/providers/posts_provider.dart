@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/core/providers/comment_provider.dart';
+
+import 'comment_provider.dart';
 
 class PostModel {
   final String id;
@@ -27,43 +28,45 @@ class PostsProvider with ChangeNotifier {
     print('PostsProvider constructor called');
   }
 
-  final List<PostModel> _posts = [];
-  /*  final List<PostModel> _posts = [
+  // final List<PostModel> _posts = [];
+  final List<PostModel> _posts = [
     PostModel(
       id: 'Postid1',
       userId: 'AhmedId1',
-      postPublishTime: DateTime.now(),
+      postPublishTime: DateTime.now().subtract(const Duration(minutes: 50)),
       postContent:
-          'I found something to share with you .. please let me  know if it bad ',
+          'Hi I\'m Ahmed Elsayed, I created a new post at  ${DateTime.now().subtract(const Duration(minutes: 50))}',
       comments: [],
       likesNumber: 15,
     ),
     PostModel(
       id: 'Postid2',
       userId: 'TarekId2',
-      postPublishTime: DateTime.now(),
-      postContent: 'postContent',
+      postPublishTime: DateTime.now().subtract(const Duration(minutes: 37)),
+      postContent:
+          'Hi I\'m Mohamed Tarek, I created a new post at  ${DateTime.now().subtract(const Duration(minutes: 37))}',
       comments: [],
       likesNumber: 15,
     ),
     PostModel(
       id: 'Postid3',
       userId: 'MostafaId2',
-      postPublishTime: DateTime.now(),
-      postContent: 'postContent',
+      postPublishTime: DateTime.now().subtract(const Duration(minutes: 15)),
+      postContent:
+          'Hi I\'m Mostafa Ramadan, I created a new post at  ${DateTime.now().subtract(const Duration(minutes: 15))}',
       comments: [],
       likesNumber: 15,
     ),
     PostModel(
       id: 'Postid5',
       userId: 'ZiadId1',
-      postPublishTime: DateTime.now(),
-      postContent: 'postContent',
+      postPublishTime: DateTime.now().subtract(const Duration(minutes: 10)),
+      postContent:
+          'Hi I\'m Ziad Hesham, I created a new post at  ${DateTime.now().subtract(const Duration(minutes: 10))}',
       comments: [],
       likesNumber: 15,
     ),
   ];
-  */
   List<PostModel> get posts => [..._posts];
 
   List<PostModel> userPosts(userId) {

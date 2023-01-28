@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/core/globals/global_variables.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/globals/global_variables.dart';
 import '../../../core/providers/posts_provider.dart';
 
 class NewCommentWidget extends StatefulWidget {

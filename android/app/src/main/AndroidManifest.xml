@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.instaclone">
    <application
-        android:label="InstaClone"
+        android:label="instaclone"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/core/providers/users_provider.dart';
-import 'package:InstaClone/home_screen/new_post/new_post_widget.dart';
 import 'package:provider/provider.dart';
+
+import '../../core/providers/users_provider.dart';
+import 'new_post_widget.dart';
 
 class NewPostScreen extends StatefulWidget {
   static String routeName = '/NewPostScreen';

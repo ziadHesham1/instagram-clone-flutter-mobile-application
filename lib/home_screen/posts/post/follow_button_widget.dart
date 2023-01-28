@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/core/globals/global_widgets/global_snackbar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/globals/global_widgets.dart';
+import '../../../core/globals/global_widgets/global_snackbar.dart';
 import '../../../core/providers/users_provider.dart';
 
 class FollowButtonWidget extends StatefulWidget {

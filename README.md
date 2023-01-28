@@ -1,3 +1,3 @@
-# InstaClone
+# instaclone
 
 A new Flutter project.

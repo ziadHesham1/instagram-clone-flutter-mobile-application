@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/profile/profile_posts_widget.dart';
-import 'package:InstaClone/profile/profile_summery_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../core/globals/global_variables.dart';
 import '../core/providers/users_provider.dart';
 import 'profile_details_widget.dart';
+import 'profile_posts_widget.dart';
+import 'profile_summery_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   static String routeName = '/ProfileScreen route';

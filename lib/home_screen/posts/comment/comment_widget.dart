@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/core/providers/comment_provider.dart';
 
 import 'package:provider/provider.dart';
 
 import '../../../core/globals/global_variables.dart';
+import '../../../core/providers/comment_provider.dart';
 import '../../../core/providers/users_provider.dart';
 
 class CommentWidget extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/home_screen/posts/comment/new_comment_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../core/providers/posts_provider.dart';
 import 'posts/comment/comments_widget.dart';
+import 'posts/comment/new_comment_widget.dart';
 import 'posts/post/post_widget.dart';
 
 class PostDetailsScreen extends StatelessWidget {

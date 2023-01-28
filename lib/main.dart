@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/core/globals/global_variables.dart';
-import 'package:InstaClone/core/providers/users_provider.dart';
-import 'package:InstaClone/home_screen/new_post/new_post_screen.dart';
-import 'package:provider/provider.dart';
 
+import 'package:provider/provider.dart';
+import 'core/globals/global_variables.dart';
 import 'core/providers/comment_provider.dart';
 import 'core/providers/posts_provider.dart';
+import 'core/providers/users_provider.dart';
 import 'home_screen/home_screen.dart';
+import 'home_screen/new_post/new_post_screen.dart';
 import 'home_screen/post_details_screen.dart';
 import 'profile/profile_screen.dart';
 

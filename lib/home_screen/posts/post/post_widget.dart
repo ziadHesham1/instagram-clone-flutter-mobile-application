@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/profile/profile_screen.dart';
 
 import 'package:provider/provider.dart';
 
 import '../../../core/globals/global_variables.dart';
 import '../../../core/providers/posts_provider.dart';
 import '../../../core/providers/users_provider.dart';
+import '../../../profile/profile_screen.dart';
 import '../../post_details_screen.dart';
 import 'follow_button_widget.dart';
 import 'post_interaction_widget.dart';

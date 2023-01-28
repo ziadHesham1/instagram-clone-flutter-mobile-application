@@ -1,7 +1,8 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
-import 'package:InstaClone/core/globals/global_variables.dart';
+import '../core/globals/global_variables.dart';
+import '../core/providers/users_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../core/providers/users_provider.dart';

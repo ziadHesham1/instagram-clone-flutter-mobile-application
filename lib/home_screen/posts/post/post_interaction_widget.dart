@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:InstaClone/core/providers/users_provider.dart';
-import 'package:InstaClone/core/globals/global_widgets/global_snackbar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/globals/global_variables.dart';
+import '../../../core/globals/global_widgets/global_snackbar.dart';
 import '../../../core/providers/posts_provider.dart';
 import '../../../core/globals/global_widgets.dart';
+import '../../../core/providers/users_provider.dart';
 import '../../post_details_screen.dart';
 
 class PostInteractionWidget extends StatefulWidget {
