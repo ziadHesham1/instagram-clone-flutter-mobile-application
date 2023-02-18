@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'comment_provider.dart';
 
@@ -35,7 +36,7 @@ class PostsProvider with ChangeNotifier {
       userId: 'AhmedId1',
       postPublishTime: DateTime.now().subtract(const Duration(minutes: 50)),
       postContent:
-          'Hi I\'m Ahmed Elsayed, I created a new post at  ${DateTime.now().subtract(const Duration(minutes: 50))}',
+          'Hi I\'m Ahmed Elsayed, I created a new post at  ${DateFormat.yMMMEd().format(DateTime.now())}',
       comments: [],
       likesNumber: 15,
     ),
@@ -44,7 +45,7 @@ class PostsProvider with ChangeNotifier {
       userId: 'TarekId2',
       postPublishTime: DateTime.now().subtract(const Duration(minutes: 37)),
       postContent:
-          'Hi I\'m Mohamed Tarek, I created a new post at  ${DateTime.now().subtract(const Duration(minutes: 37))}',
+          'Hi I\'m Mohamed Tarek, I created a new post at  ${DateFormat.yMMMEd().format(DateTime.now())}',
       comments: [],
       likesNumber: 15,
     ),
@@ -53,7 +54,7 @@ class PostsProvider with ChangeNotifier {
       userId: 'MostafaId2',
       postPublishTime: DateTime.now().subtract(const Duration(minutes: 15)),
       postContent:
-          'Hi I\'m Mostafa Ramadan, I created a new post at  ${DateTime.now().subtract(const Duration(minutes: 15))}',
+          'Hi I\'m Mostafa Ramadan, I created a new post at  ${DateFormat.yMMMEd().format(DateTime.now())}',
       comments: [],
       likesNumber: 15,
     ),
@@ -62,11 +63,12 @@ class PostsProvider with ChangeNotifier {
       userId: 'ZiadId1',
       postPublishTime: DateTime.now().subtract(const Duration(minutes: 10)),
       postContent:
-          'Hi I\'m Ziad Hesham, I created a new post at  ${DateTime.now().subtract(const Duration(minutes: 10))}',
+          'Hi I\'m Ziad Hesham, I created a new post at  ${DateFormat.yMMMEd().format(DateTime.now())}',
       comments: [],
       likesNumber: 15,
     ),
   ];
+  
   List<PostModel> get posts => [..._posts];
 
   List<PostModel> userPosts(userId) {
