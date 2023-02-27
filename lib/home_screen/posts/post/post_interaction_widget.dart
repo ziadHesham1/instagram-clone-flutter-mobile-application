@@ -31,7 +31,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           // likes buttons
-          buildLikesButton(post),
+          _likesButton(post),
           const SizedBox(width: 10),
           // comments button
           buildCommentButton(providedPosts, post, loggedInUser),
@@ -42,7 +42,7 @@ class _PostInteractionWidgetState extends State<PostInteractionWidget> {
     );
   }
 
-  Widget buildLikesButton(PostModel post) {
+  Widget _likesButton(PostModel post) {
     return TextButton.icon(
         icon: GlobalWidgets.like_icon,
         label: Text('${post.likesNumber}'),

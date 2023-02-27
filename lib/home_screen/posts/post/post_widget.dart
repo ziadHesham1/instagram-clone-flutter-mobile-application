@@ -56,6 +56,7 @@ class _PostWidgetState extends State<PostWidget> {
             trailing: FollowButtonWidget(user.id),
           ),
           //post content
+          // TODO: Inkwell does't make animation
           InkWell(
             onTap: () {
               setState(() {

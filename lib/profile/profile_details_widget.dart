@@ -37,6 +37,7 @@ class ProfileDetailsWidget extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               // follow and chat buttons
+              // name it bar
               Row(
                 children: [
                   Container(

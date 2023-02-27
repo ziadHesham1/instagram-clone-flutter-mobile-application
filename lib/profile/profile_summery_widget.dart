@@ -21,15 +21,16 @@ class ProfileSummeryWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          buildNumberBox(userPosts.length, 'Posts'),
-          buildNumberBox(user.followers.length, 'Followers'),
-          buildNumberBox(user.followings.length, 'Following'),
+          numberBox(userPosts.length, 'Posts'),
+          numberBox(user.followers.length, 'Followers'),
+          numberBox(user.followings.length, 'Following'),
         ],
       ),
     );
   }
+  // Widget _boxNumber({required int number, required String txt}) {
 
-  Widget buildNumberBox(int number, String txt) {
+  Widget numberBox(int number, String txt) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

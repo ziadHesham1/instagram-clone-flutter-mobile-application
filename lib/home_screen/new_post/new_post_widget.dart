@@ -31,14 +31,17 @@ class _NewPostWidgetState extends State<NewPostWidget> {
     UsersModel? loggedInUser =
         Provider.of<UsersProvider>(context).loggedInUser();
 
-    var dummyPostContent =
-        'Hi I\'m ${loggedInUser!.name}, I created a new post at ${DateFormat.yMMMEd().format(DateTime.now())}';
+    var dummyPostContent = loggedInUser != null
+        ? 'Hi I\'m ${loggedInUser.name}, I created a new post at ${DateFormat.yMMMEd().format(DateTime.now())}'
+        : '';
 
     Widget circleAvatar = Padding(
       padding: const EdgeInsets.all(8.0),
       child: CircleAvatar(
         radius: 10,
-        backgroundImage: AssetImage(loggedInUser.imgPath),
+        backgroundImage: AssetImage(loggedInUser != null
+            ? loggedInUser.imgPath
+            : GlobalVariables.anonymousImg),
       ),
     );
 

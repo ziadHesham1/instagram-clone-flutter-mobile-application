@@ -1,0 +1,94 @@
+{
+	"files": [
+		{
+			"path": "lib/core/globals/global_widgets/global_snackbar.dart",
+			"bookmarks": [
+				{
+					"line": 40,
+					"column": 25,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "lib/home_screen/posts/comment/comments_widget.dart",
+			"bookmarks": [
+				{
+					"line": 19,
+					"column": 33,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "lib/home_screen/posts/comment/new_comment_widget.dart",
+			"bookmarks": [
+				{
+					"line": 15,
+					"column": 24,
+					"label": ""
+				},
+				{
+					"line": 22,
+					"column": 15,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "lib/home_screen/posts/post/post_interaction_widget.dart",
+			"bookmarks": [
+				{
+					"line": 33,
+					"column": 12,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "lib/home_screen/posts/post/post_widget.dart",
+			"bookmarks": [
+				{
+					"line": 39,
+					"column": 15,
+					"label": ""
+				},
+				{
+					"line": 58,
+					"column": 48,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "lib/home_screen/home_screen.dart",
+			"bookmarks": [
+				{
+					"line": 59,
+					"column": 27,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "lib/profile/profile_details_widget.dart",
+			"bookmarks": [
+				{
+					"line": 40,
+					"column": 17,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "lib/profile/profile_summery_widget.dart",
+			"bookmarks": [
+				{
+					"line": 30,
+					"column": 43,
+					"label": ""
+				}
+			]
+		}
+	]
+}

@@ -28,6 +28,7 @@ class _FollowButtonWidgetState extends State<FollowButtonWidget> {
           userProvider.isContaining(loggedInUser.followings, widget.userId);
       aFollower =
           userProvider.isContaining(loggedInUser.followers, widget.userId);
+      // ProviderBuilder();
       return TextButton.icon(
         onPressed: () {
           setState(() {

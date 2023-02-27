@@ -22,10 +22,10 @@ class _FollowListsCheckerState extends State<FollowListsChecker> {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.of(context);
+    final size = MediaQuery.of(context).size;
 
-    widgetHeight = mediaQuery.size.height * 0.4;
-    widgetWidth = mediaQuery.size.width * 0.45;
+    widgetHeight = size.height * 0.4;
+    widgetWidth = size.width * 0.45;
     return Row(
       children: [
         buildUsersList(

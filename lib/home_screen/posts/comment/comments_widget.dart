@@ -16,18 +16,23 @@ class CommentsWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Comments (${commentsList.length})',
-              style: GlobalVariables.subTitleTextStyle,
-            ),
-          ),
+          _newMethod(),
+          //TODO: list of widgets
           ...commentsList.map(
             (CommentModel comment) => CommentWidget(comment),
           ),
         ],
       ),
     );
+  }
+
+  Padding _newMethod() {
+    return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Comments (${commentsList.length})',
+            style: GlobalVariables.subTitleTextStyle,
+          ),
+        );
   }
 }
